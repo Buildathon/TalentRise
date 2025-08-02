@@ -1,11 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { ethers } from "ethers";
 
 const ProfilePage = () => {
+  const [account, setAccount] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  // Función para conectar MetaMask
+  const connectMetaMask = async () => {
+    setError(null);
+    if (typeof window.ethereum === "undefined") {
+      setError("MetaMask no está instalado. Por favor instala MetaMask.");
+      return;
+    }
+    try {
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      setAccount(accounts[0]);
+    } catch (err: any) {
+      if (err.code === 4001) {
+        setError("Conexión a MetaMask rechazada por el usuario.");
+      } else {
+        setError("Error al conectar a MetaMask.");
+      }
+    }
+  };
+
+  // Función para mostrar dirección acortada
+  const truncateAddress = (addr: string) => {
+    return addr.slice(0, 6) + "..." + addr.slice(-4);
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-r from-purple-800 to-indigo-900 text-white flex justify-center p-8">
       <section className="bg-[#1f1f1f] rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
         {/* Portada */}
-        <div className="relative h-40 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80')" }}>
+        <div
+          className="relative h-40 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80')",
+          }}
+        >
           {/* Avatar */}
           <img
             src="https://randomuser.me/api/portraits/men/32.jpg"
@@ -40,43 +74,63 @@ const ProfilePage = () => {
 
           {/* Minas de Heart */}
           <div className="bg-purple-700 rounded-lg p-4 text-center shadow-md">
-            <h2 className="text-xl font-semibold">💖 Minas de Heart</h2>
+            <h2 className="text-xl font-semibold flex justify-center items-center space-x-2">
+              <i className="bx bxs-heart text-pink-400 text-2xl"></i>
+              <span>Minas de Heart</span>
+            </h2>
             <p className="text-2xl mt-1">2,847</p>
             <p className="text-gray-300">Hearts recolectados este mes</p>
           </div>
 
           {/* Fan Badge */}
-          <div className="text-center text-yellow-400 font-semibold text-lg drop-shadow-md">
-            🏆 Fan Badge de Oro
+          <div className="text-center text-yellow-400 font-semibold text-lg drop-shadow-md flex justify-center items-center space-x-2">
+            <i className="bx bxs-trophy"></i>
+            <span>Fan Badge de Oro</span>
           </div>
 
           {/* Wallet connection */}
           <div className="space-y-4 mt-6">
-            <h3 className="text-xl font-semibold text-center mb-4">💰 Conectar Wallet</h3>
+            <h3 className="text-xl font-semibold text-center mb-4 flex justify-center items-center space-x-2">
+              <i className="bx bx-wallet text-yellow-300 text-2xl"></i>
+              <span>Conectar Wallet</span>
+            </h3>
 
-            <button className="flex items-center justify-between w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-5 py-3 transition shadow-lg">
+            {/* MetaMask */}
+            <button
+              onClick={connectMetaMask}
+              className="flex items-center justify-between w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-5 py-3 transition shadow-lg"
+            >
               <span className="flex items-center space-x-3">
-                <span className="text-2xl">🦊</span>
+                <i className="bx bxl-metamask text-2xl"></i>
                 <span>MetaMask</span>
               </span>
-              <span className="text-gray-200 text-sm italic">Billetera más popular</span>
+              <span className="text-gray-200 text-sm italic">
+                {account ? truncateAddress(account) : "Billetera más popular"}
+              </span>
             </button>
 
+            {/* WalletConnect (solo UI, sin funcionalidad aquí) */}
             <button className="flex items-center justify-between w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-5 py-3 transition shadow-lg">
               <span className="flex items-center space-x-3">
-                <span className="text-2xl">🔗</span>
+                <i className="bx bx-link-alt text-2xl"></i>
                 <span>WalletConnect</span>
               </span>
               <span className="text-gray-200 text-sm italic">Conecta múltiples wallets</span>
             </button>
 
+            {/* Coinbase Wallet (solo UI) */}
             <button className="flex items-center justify-between w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-5 py-3 transition shadow-lg">
               <span className="flex items-center space-x-3">
-                <span className="text-2xl">🪙</span>
+                <i className="bx bxl-coinbase text-2xl"></i>
                 <span>Coinbase Wallet</span>
               </span>
               <span className="text-gray-200 text-sm italic">Billetera de Coinbase</span>
             </button>
+
+            {/* Mostrar error si existe */}
+            {error && (
+              <p className="text-red-500 text-center mt-3 font-semibold">{error}</p>
+            )}
           </div>
         </div>
       </section>
