@@ -1,29 +1,52 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="Nucleo Linux UAGRM" />
+  <meta name="description"
+    content="Nucleo Linux UAGRM - Comunidad de software libre, hacking ético y cultura digital." />
+  <meta name="keywords" content="Linux, UAGRM, software libre, hacking, opensource, tecnología, Bolivia" />
+  <meta name="author" content="Nucleo Linux UAGRM" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta property="og:title" content="Nucleo Linux UAGRM" />
+  <meta property="og:description"
+    content="Comunidad universitaria comprometida con la libertad tecnológica y el aprendizaje." />
+  <meta property="og:image" content="/logo.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nucleolinux.uagrm.bo" />
+
   <title>Nucleo Linux UAGRM</title>
 
   <!-- Favicon -->
   <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-  <!-- Boxicons - Añadimos Boxicons para usar los iconos -->
+
+  <!-- Boxicons -->
   <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
 
-  <!-- Vincula las fuentes (si es necesario) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/assets/index-b047c3d2.css" />
+
+  <!-- JavaScript principal (module) -->
   <script type="module" crossorigin src="/assets/index-779540d1.js"></script>
-  <link rel="stylesheet" href="/assets/index-b047c3d2.css">
 </head>
 
-<body class="bg-gray-100 text-gray-800 font-roboto">
+<body
+  class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white font-roboto antialiased selection:bg-indigo-600 selection:text-white">
+
+  <!-- Punto de entrada React/Vite/etc -->
   <div id="root"></div>
 
-  
+  <!-- Footer opcional si usas modo SPA -->
+  <noscript>
+    <div class="text-center p-6 bg-red-100 text-red-700">
+      Esta aplicación requiere JavaScript para funcionar correctamente. Por favor, actívalo en tu navegador.
+    </div>
+  </noscript>
 </body>
 
 </html>
