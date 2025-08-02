@@ -1,30 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
+
+// Aquí importa tu dirección y ABI (que debes tener en un archivo separado)
+import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../contracts/contractInfo";
 
 const ProfilePage = () => {
   const [account, setAccount] = useState<string | null>(null);
+  const [contract, setContract] = useState<ethers.Contract | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [name, setName] = useState<string>("");
+  const [symbol, setSymbol] = useState<string>("");
 
-  // Función para conectar MetaMask
+  // Conectar MetaMask y crear contrato
   const connectMetaMask = async () => {
     setError(null);
-    if (typeof window.ethereum === "undefined") {
+    if (!window.ethereum) {
       setError("MetaMask no está instalado. Por favor instala MetaMask.");
       return;
     }
+
     try {
       const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
       setAccount(accounts[0]);
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+
+      const contractInstance = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+      setContract(contractInstance);
     } catch (err: any) {
-      if (err.code === 4001) {
-        setError("Conexión a MetaMask rechazada por el usuario.");
-      } else {
-        setError("Error al conectar a MetaMask.");
-      }
+      if (err.code === 4001) setError("Conexión a MetaMask rechazada por el usuario.");
+      else setError("Error al conectar a MetaMask: " + (err.message || err));
     }
   };
 
-  // Función para mostrar dirección acortada
+  // Al cambiar el contrato, obtener nombre y símbolo
+  useEffect(() => {
+    if (!contract) return;
+
+    const fetchContractData = async () => {
+      try {
+        const contractName = await contract.name();
+        const contractSymbol = await contract.symbol();
+        setName(contractName);
+        setSymbol(contractSymbol);
+      } catch (err: any) {
+        setError("Error al obtener datos del contrato: " + (err.message || err));
+      }
+    };
+
+    fetchContractData();
+  }, [contract]);
+
+  // Función para acortar dirección
   const truncateAddress = (addr: string) => {
     return addr.slice(0, 6) + "..." + addr.slice(-4);
   };
@@ -48,7 +76,7 @@ const ProfilePage = () => {
           />
         </div>
 
-        {/* Contenido debajo de portada */}
+        {/* Contenido */}
         <div className="pt-16 px-8 pb-8 space-y-6">
           {/* Nombre y descripción */}
           <div className="text-center">
@@ -88,6 +116,14 @@ const ProfilePage = () => {
             <span>Fan Badge de Oro</span>
           </div>
 
+          {/* Datos del contrato */}
+          <div className="text-center mt-4">
+            <p className="text-lg">
+              <strong>Contrato:</strong>{" "}
+              {name ? `${name} (${symbol})` : "No conectado"}
+            </p>
+          </div>
+
           {/* Wallet connection */}
           <div className="space-y-4 mt-6">
             <h3 className="text-xl font-semibold text-center mb-4 flex justify-center items-center space-x-2">
@@ -109,7 +145,7 @@ const ProfilePage = () => {
               </span>
             </button>
 
-            {/* WalletConnect (solo UI, sin funcionalidad aquí) */}
+            {/* WalletConnect (solo UI) */}
             <button className="flex items-center justify-between w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-5 py-3 transition shadow-lg">
               <span className="flex items-center space-x-3">
                 <i className="bx bx-link-alt text-2xl"></i>
@@ -127,7 +163,7 @@ const ProfilePage = () => {
               <span className="text-gray-200 text-sm italic">Billetera de Coinbase</span>
             </button>
 
-            {/* Mostrar error si existe */}
+            {/* Error */}
             {error && (
               <p className="text-red-500 text-center mt-3 font-semibold">{error}</p>
             )}

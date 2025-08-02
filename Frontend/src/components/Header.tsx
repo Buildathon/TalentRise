@@ -41,7 +41,6 @@ const Header = () => {
           <Link href="/explorar" className="hover:text-sky-300 transition">Explorar</Link>
           <Link href="/portafolio" className="hover:text-sky-300 transition">Portafolio</Link>
           <Link href="/notificaciones" className="hover:text-sky-300 transition">Notificaciones</Link>
-          <Link href="/contacto" className="hover:text-sky-300 transition">Contacto</Link>
           <Link href="/login" className="bg-white text-purple-700 px-4 py-2 rounded-full hover:bg-purple-100 transition">Iniciar sesión</Link>
           <Link href="/register" className="bg-purple-500 px-4 py-2 rounded-full hover:bg-purple-600 transition">Registrarse</Link>
         </nav>
