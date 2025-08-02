@@ -1,0 +1,1500 @@
+[
+  {
+    "id": 0,
+    "nombre_completo": "wtm santa cruz",
+    "correo_electronico": "",
+    "numero_contacto": "000000",
+    "sobre_ti": "Desarrollador full-stack",
+    "ocupacion_actual": "Ingeniero de software",
+    "estudios": {
+      "carrera": "Ingeniería en Sistemas",
+      "universidad": "Universidad XYZ"
+    },
+    "trabajo": {
+      "cargo": "Desarrollador",
+      "empresa": "Tech Corp"
+    },
+    "experiencia_areas": [
+      "Frontend",
+      "Backend"
+    ],
+    "deseos_aprendizaje": [
+      "Machine Learning",
+      "Blockchain"
+    ],
+    "experiencia_eventos": [
+      "Hackathon 2022",
+      "DevCon 2023"
+    ],
+    "fortaleza": [
+      "Trabajo en equipo",
+      "Resolución de problemas"
+    ],
+    "links": [
+      "https://github.com/juanperez",
+      "https://linkedin.com/in/juanperez"
+    ],
+    "fotografia": "https://nlbol.github.io/uagrm/logo.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/0.png",
+    "area_colaboracion": [
+      "Frontend",
+      "UI/UX"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Liderazgo"
+    ],
+    "herramientas_tecnologias": [
+      "Excel, Java,JavaScript,react"
+    ],
+    "motivacion": [
+      "Aprender nuevas tecnologías",
+      "Contribuir a proyectos open source"
+    ]
+  },
+  {
+    "id": 1,
+    "nombre_completo": "Lourdes Rosario Fallace Palmero",
+    "correo_electronico": "05headhunterrosario@gmail.com",
+    "numero_contacto": "+59177659527",
+    "sobre_ti": "Desarrollo de app móvil o software",
+    "ocupacion_actual": "Profesional",
+    "estudios": {
+      "carrera": "Soy graduada de la carrera de Psicología con Diplomado en Psicología Organizacional",
+      "universidad": ""
+    },
+    "trabajo": {
+      "cargo": "Psicóloga Organizacional",
+      "empresa": "Empresa Marka"
+    },
+    "experiencia_areas": [
+      "Gestión de proyectos",
+      "Psicología Organizacional",
+      "Finanzas",
+      "Desarrollo web",
+      "Desarrollo móvil",
+      "Inteligencia Artificial"
+    ],
+    "deseos_aprendizaje": [
+      "Quiero aprender más sobre desarrollo front-end y nuevas herramientas de diseño."
+    ],
+    "experiencia_eventos": [
+      "Sí, tengo experiencia"
+    ],
+    "fortaleza": [
+      "Mi mayor fortaleza en el ámbito profesional y personal es mi capacidad de empatía y escucha activa. En el trabajo, me permite comprender mejor las necesidades de las personas y brindar un acompañamiento adecuado. En lo personal, me ayuda a construir relaciones sólidas y significativas con quienes me rodean."
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/rosariotalent?igsh=MTBoODlla25jcDN4aA==",
+      "linkedin": "https://www.linkedin.com/in/%E2%84%92%F0%9D%91%9C%F0%9D%93%8A%F0%9D%93%87%F0%9D%92%B9%F0%9D%91%92%F0%9D%93%88-%E2%84%9B%F0%9D%91%9C%F0%9D%93%88%F0%9D%92%B6%F0%9D%93%87%F0%9D%92%BE%F0%9D%91%9C-%E2%84%B1-4703b6283/",
+      "facebook": "",
+      "x": ""
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/1-rosario.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/1.png",
+    "area_colaboracion": [
+      "Finanzas"
+    ],
+    "habilidades_blandas": [
+      "Trabajo en equipo",
+      "Empatía",
+      "Escucha activa"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sí, me gustaría. Si hay un tema relacionado de mi área psicología con tecnología"
+    ],
+    "herramientas_tecnologias": [
+      "Excel"
+    ],
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Tarde, Noche"
+  },
+  {
+    "id": 2,
+    "nombre_completo": "Maria Lourdes Vaca Pessoa",
+    "correo_electronico": "louvp24@gmail.com",
+    "numero_contacto": "+59178547912",
+    "sobre_ti": "Amplio",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería de Sistemas",
+      "universidad": "Universidad Nur"
+    },
+    "trabajo": {
+      "cargo": "Pasante",
+      "empresa": "Santillana"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Desarrollo móvil",
+      "Inteligencia Artificial",
+      "Ciencia de Datos",
+      "Ciberseguridad",
+      "Gestión de proyectos",
+      "Marketing Digital",
+      "UX/UI",
+      "Soporte técnico / IT",
+      "Finanzas"
+    ],
+    "deseos_aprendizaje": [
+      "Quiero aprender más sobre desarrollo front-end y nuevas herramientas de diseño."
+    ],
+    "experiencia_eventos": [
+      "Sí, pero de manera ocasional"
+    ],
+    "fortaleza": [
+      "Responsabilidad con los trabajos designados."
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/_.lourdesvaca._/",
+      "linkedin": "https://www.linkedin.com/in/lourdesvaca",
+      "facebook": "",
+      "x": "https://x.com/_lourdesvaca"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/2-lourdes.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/2.png",
+    "area_colaboracion": [
+      "Marketing",
+      "Investigación y Desarrollo"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Resolución de problemas",
+      "Brindar ideas",
+      "Don de servicio"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sí, me gustaría dar uno sobre LinkedIn o también algo más de habilidades blandas."
+    ],
+    "herramientas_tecnologias": [
+      "Word",
+      "Excel",
+      "PowerPoint",
+      "Canva"
+    ],
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 3,
+    "nombre_completo": "Carla Patricia Gonzales Escobar",
+    "correo_electronico": "gonzalesescobarcarlapatricia8@gmail.com",
+    "numero_contacto": "+59160847148",
+    "sobre_ti": "Soy una persona autodidacta apasionada por la tecnología, con conocimientos en desarrollo web y análisis de datos con Power BI, buscando oportunidades para mejorar mis habilidades y aplicarlas en proyectos innovadores.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Tecnico Superior en Informática.",
+      "universidad": "N/A"
+    },
+    "trabajo": {
+      "cargo": "N/A",
+      "empresa": "N/A"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Inteligencia Artificial",
+      "Ciberseguridad",
+      "UX/UI"
+    ],
+    "deseos_aprendizaje": [
+      "Estoy en proceso de aprender y poder desarrollar mis conocimientos en tecnologías y herramientas específicas, estoy dispuesta a aprender y así mismo poder mejorar mis habilidades para poder contribuir en futuros proyectos y equipos."
+    ],
+    "experiencia_eventos": [
+      "No, pero me gustaría aprender"
+    ],
+    "fortaleza": [
+      "Yo considero que mi mayor fortaleza es la capacidad que tengo para poder aprender y adaptarme de manera rápida a las nuevas situaciones y tecnologías. Lo cual me permite estar actualizada en mi campo y así poder abordar desafíos con toda confianza y creatividad."
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/carlita_2808",
+      "linkedin": "https://www.linkedin.com/in/carla-patricia-gonzales-escobar-305872228",
+      "facebook": "",
+      "x": ""
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/logo.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/3.png",
+    "area_colaboracion": [
+      "Operaciones",
+      "Logística"
+    ],
+    "habilidades_blandas": [
+      "Comunicación efectiva",
+      "Trabajo en equipo",
+      "Resolución de problemas",
+      "Adaptabilidad",
+      "Autodisciplina",
+      "Aprendizaje continuo",
+      "Pensamiento crítico"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sí, sobre las habilidades blandas para así poder llegar a los demás y que puedan perder el miedo frente a las situaciones que se les presenta."
+    ],
+    "herramientas_tecnologias": [
+      "Power BI"
+    ],
+    "dias_disponibles": [
+      "Viernes",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Tarde, Noche"
+  },
+  {
+    "id": 4,
+    "nombre_completo": "Brigith Pericena Choque",
+    "correo_electronico": "bpericena@gmail.com",
+    "numero_contacto": "+59160021229",
+    "sobre_ti": "Me destacó por ser muy curiosa en el ámbito y me gusta conocer otras ramas y compartir lo aprendido sobre todo herramientas de IA que pudo ayudar a expandir mis conocimientos",
+    "ocupacion_actual": "Profesional",
+    "estudios": {
+      "carrera": "Contaduría",
+      "universidad": ""
+    },
+    "trabajo": {
+      "cargo": "Analista tributario",
+      "empresa": "Batebol SA"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Gestión de proyectos",
+      "Marketing Digital"
+    ],
+    "deseos_aprendizaje": [
+      "Temas de IA"
+    ],
+    "experiencia_eventos": [
+      "Sí, pero de manera ocasional"
+    ],
+    "fortaleza": [
+      "Escuchar opiniones"
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/brigit1dh?igsh=MWJrZW5teDNzczJ3aQ==",
+      "linkedin": "https://www.linkedin.com/in/brigith-pericena-choque-19a95a108?trk=contact-info",
+      "facebook": "No",
+      "x": "@brigit1Dh"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/4-brigith.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/4.png",
+    "area_colaboracion": [
+      "Finanzas"
+    ],
+    "habilidades_blandas": [
+      "Comunicación"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sí, sobre temas de IA"
+    ],
+    "herramientas_tecnologias": [
+      "Figma",
+      "Excel"
+    ],
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 5,
+    "nombre_completo": "Maria Teresa Honor Rivera",
+    "correo_electronico": "teresahonor166@gmail.com",
+    "numero_contacto": "+59169187111",
+    "sobre_ti": "Soy una apasionada de la tecnología, me gusta participar de programas y actividades que me ayuden a crecer en el mundo tecnológico. Actualmente trabajo como desarrolladora y participo de varios programas internacionales de liderazgo y voluntarios.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería informática",
+      "universidad": "UAGRM"
+    },
+    "trabajo": {
+      "cargo": "Desarrolladora full stack",
+      "empresa": "Aihhoo/MCWork"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Desarrollo móvil",
+      "Gestión de proyectos",
+      "UX/UI"
+    ],
+    "deseos_aprendizaje": [
+      "Desarrollo web o Next.js"
+    ],
+    "experiencia_eventos": [
+      "Sí, tengo experiencia"
+    ],
+    "fortaleza": [
+      "Mi resiliencia y capacidad de resolver problemas"
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/teres_aaa3?igsh=MWt2bzRiZHZwZjNweQ==",
+      "linkedin": "https://www.linkedin.com/in/maria-teresa-honor-rivera-068945304?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "facebook": "No tengo",
+      "x": "No tengo"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/5-Teresa.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/5.png",
+    "area_colaboracion": [
+      "Investigación y desarrollo",
+      "Legal"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Trabajo en equipo",
+      "Resolución de problemas"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Tal vez. Desarrollo web o Next.js"
+    ],
+    "herramientas_tecnologias": [
+      "Next.js",
+      "React",
+      "Figma",
+      "TypeScript",
+      "JavaScript",
+      "Django",
+      "Java (básico)",
+      "Python (básico)"
+    ],
+    "dias_disponibles": [
+      "Martes",
+      "Jueves",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 6,
+    "nombre_completo": "Jhenny Michelle Solis Herrera",
+    "correo_electronico": "solisherrerajhenny@gmail.com",
+    "numero_contacto": "+59169193675",
+    "sobre_ti": "Soy una persona comprometida con la tecnología, el voluntariado y el empoderamiento femenino. Participo activamente en comunidades como FICCT Ladies y WTM Santa Cruz, organizando eventos y dinámicas para fomentar la participación de mujeres en tecnología e ingeniería.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ing. en Sistemas",
+      "universidad": "N/A"
+    },
+    "trabajo": {
+      "cargo": "Pasante Área de QA",
+      "empresa": "N/A"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Gestión de proyectos",
+      "UX/UI",
+      "Calidad de software"
+    ],
+    "deseos_aprendizaje": [
+      "Desarrollo móvil",
+      "Inteligencia Artificial",
+      "Ciberseguridad",
+      "UX/UI",
+      "Finanzas"
+    ],
+    "experiencia_eventos": [
+      "Sí, tengo experiencia"
+    ],
+    "fortaleza": [
+      "Mi mayor fortaleza es la organización y la gestión de proyectos. Me destaco en la planificación y ejecución de eventos, la coordinación de equipos."
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/jhennsol?igsh=YW1vMm56ZmloZXNu",
+      "linkedin": "https://www.linkedin.com/in/jhennysolis/",
+      "facebook": "No tengo",
+      "x": "No tengo"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/5-Jhenny.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/6.png",
+    "area_colaboracion": [
+      "Finanzas"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Trabajo en equipo",
+      "Oratoria"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Métodos y herramientas para realizar investigaciones en el ámbito tech"
+    ],
+    "herramientas_tecnologias": [
+      "SQL",
+      "Power BI",
+      "Katalon",
+      "Postman",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Microsoft Office",
+      "Padlet",
+      "LinkedIn",
+      "Java",
+      "C++",
+      "C++Builder"
+    ],
+    "dias_disponibles": [
+      "Lunes",
+      "Viernes",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 7,
+    "nombre_completo": "Shirley Gutierrez Ortega",
+    "correo_electronico": "gutierrezshirley72@gmail.com",
+    "numero_contacto": "+59162207102",
+    "sobre_ti": "Soy estudiante de Ingeniería en Sistemas con enfoque en desarrollo backend y análisis de datos. Disfruto trabajar con metodologías ágiles como Scrum. Me gusta definir objetivos claros y trabajar en equipo para alcanzarlos. En mi tiempo libre, escucho música y disfruto salir a pasear. Busco seguir creciendo como profesional en proyectos desafiantes e innovadores.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería en Sistemas",
+      "universidad": "Universidad Gabriel René moreno"
+    },
+    "trabajo": {
+      "cargo": "Pasante - MOBI",
+      "empresa": "N/A"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Ciencia de Datos"
+    ],
+    "deseos_aprendizaje": [
+      "Inteligencia Artificial",
+      "Ciberseguridad"
+    ],
+    "experiencia_eventos": [
+      "Sí, pero de manera ocasional"
+    ],
+    "fortaleza": [
+      "Adaptabilidad y aprendizaje rápido"
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/ortega_.shirley?igsh=c3Jvcm4yNzFhNTZi",
+      "linkedin": "https://www.linkedin.com/in/shirley-gutierrez-a13754236",
+      "facebook": "No tengo",
+      "x": "No tengo"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/6-shirley.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/7.png",
+    "area_colaboracion": [
+      "Marketing",
+      "Logística"
+    ],
+    "habilidades_blandas": [
+      "Resolución de problemas",
+      "Trabajo bajo presión"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sí, pero no tengo dominio de palabra y tengo muchas muletillas pero estoy trabajando en eso"
+    ],
+    "herramientas_tecnologias": [
+      "Figma",
+      "Excel",
+      "Power Point",
+      "Canvas",
+      "Sprint Boot",
+      "Nest JS",
+      "Java",
+      "React JS",
+      "Angular",
+      "React",
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 8,
+    "nombre_completo": "Nicolas Emir Mejia Agreda",
+    "correo_electronico": "nmejia.bol@gmail.com",
+    "numero_contacto": "+59168983033",
+    "sobre_ti": "Autodidacta.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería en Sistemas",
+      "universidad": "UAGRM"
+    },
+    "trabajo": {
+      "cargo": "Data Analyst - AI Engineer",
+      "empresa": "N/A"
+    },
+    "experiencia_areas": [
+      "Inteligencia Artificial",
+      "Ciencia de Datos"
+    ],
+    "deseos_aprendizaje": [
+      "Desarrollo web",
+      "Inteligencia Artificial",
+      "Ciencia de Datos",
+      "Finanzas"
+    ],
+    "experiencia_eventos": [
+      "Sí, tengo experiencia"
+    ],
+    "fortaleza": [
+      "Mi capacidad de adaptación me permite ajustarme a diferentes circunstancias con facilidad, aprendiendo de manera autodidacta para desempeñarme eficazmente en cualquier entorno o rol que se requiera. Además, mi pasión por la inteligencia artificial, los datos y el empoderamiento en tecnología me impulsa a seguir aprendiendo y compartiendo conocimientos, lo que me permite aportar valor en cada proyecto o comunidad en la que participo."
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/emiru1502/",
+      "linkedin": "https://www.linkedin.com/in/nicolas-mejia-agreda/",
+      "facebook": "https://www.facebook.com/Amenicoo/",
+      "x": "https://x.com/Nicols19627652"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/7-nicolas.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/8.png",
+    "area_colaboracion": [
+      "Investigación y desarrollo"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Trabajo en equipo",
+      "Resolución de problemas",
+      "Resiliencia"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Cómo crear tu CV en Typst/LaTeX",
+      "Introducción a Python para Análisis de Datos",
+      "Introducción a la IA Generativa"
+    ],
+    "herramientas_tecnologias": [
+      "Python",
+      "LaTeX",
+      "Typst",
+      "LangChain",
+      "Streamlit",
+      "Numpy",
+      "Pandas"
+    ],
+    "dias_disponibles": [
+      "Viernes",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Tarde, Noche"
+  },
+  {
+    "id": 9,
+    "nombre_completo": "Marco David Toledo Canna",
+    "correo_electronico": "marcodavidtoledo@gmail.com",
+    "numero_contacto": "+59167733399",
+    "sobre_ti": "Soy estudiante de la carrera de ingeniería en informática, me desenvuelvo en el desarrollo móvil con flutter, llevo 3 años utilizando esta herramienta y me gusta buscar soluciones a problemas de programación.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería en Informática",
+      "universidad": "Universidad Autónoma Gabriel René Moreno"
+    },
+    "trabajo": {
+      "cargo": "No trabajo por el momento",
+      "empresa": "N/A"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Desarrollo móvil"
+    ],
+    "deseos_aprendizaje": [
+      "Gestión de proyectos",
+      "UX/UI",
+      "Finanzas"
+    ],
+    "experiencia_eventos": [
+      "Sí, pero de manera ocasional"
+    ],
+    "fortaleza": [
+      "Buscar soluciones"
+    ],
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/marco-david-toledo-canna-813bb2165"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/8-Marco.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/9.png",
+    "area_colaboracion": [
+      "Logística"
+    ],
+    "habilidades_blandas": [
+      "Resolución de problemas",
+      "Trabajo en equipo"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Por el momento no"
+    ],
+    "herramientas_tecnologias": [
+      "Flutter",
+      "NestJS",
+      "Laravel"
+    ],
+    "dias_disponibles": [
+      "Viernes",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Tarde, Noche"
+  },
+  {
+    "id": 10,
+    "nombre_completo": "Diandra Stephani Flores Calle",
+    "correo_electronico": "stefi133mer@gmail.com",
+    "numero_contacto": "+59168864185",
+    "sobre_ti": "Actualmente soy diseñadora gráfica pero soy estudiante de ingeniería en sistemas. Cuento con experiencia en el diseño web y me estoy especializando en esa área de la tecnología, esperando poder obtener más capacidades dentro de mi carrera.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería en Sistemas",
+      "universidad": "Universidad Privada Domingo Savio"
+    },
+    "trabajo": {
+      "cargo": "Diseñadora Gráfica",
+      "empresa": "Liz Sport"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Inteligencia Artificial",
+      "Marketing Digital"
+    ],
+    "deseos_aprendizaje": [
+      "Desarrollo móvil",
+      "Ciencia de Datos",
+      "Ciberseguridad",
+      "Gestión de proyectos",
+      "Marketing Digital",
+      "UX/UI",
+      "Soporte técnico / IT"
+    ],
+    "experiencia_eventos": [
+      "Sí, pero de manera ocasional"
+    ],
+    "fortaleza": [
+      "Me empeño por aprender de todo"
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/dianina133?igsh=MWo3andyMHVkMWk4bA==",
+      "linkedin": "https://www.linkedin.com/me?trk=p_mwlite_my_network-secondary_nav",
+      "facebook": "https://www.facebook.com/share/189mi2wggx/"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/9-diandra.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/10.png",
+    "area_colaboracion": [
+      "Marketing"
+    ],
+    "habilidades_blandas": [
+      "Resolución de problemas"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sí sobre diseño e inteligencia artificial"
+    ],
+    "herramientas_tecnologias": [
+      "Excel",
+      "Figma (básico)",
+      "C#",
+      "HTML"
+    ],
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 11,
+    "nombre_completo": "Alison Adriana Berbetty Omiste",
+    "correo_electronico": "berbettyomiste.a@gmail.com",
+    "numero_contacto": "+59169131888",
+    "sobre_ti": "Alison Berbetty, abogada y activista, es parte del Core Team de Ethereum Bolivia, cofundadora de Mujeres TICs Bolivia y cofundadora de Ethereum Santa Cruz. Fue Legal Scholar de Ethereum Foundation en 2024 y lidera proyectos que promueven la autorregulación, la descentralización y la inclusión financiera a través de blockchain, con un enfoque en economías emergentes y comunidades excluidas.",
+    "ocupacion_actual": "Profesional",
+    "estudios": {
+      "carrera": "N/A",
+      "universidad": "N/A"
+    },
+    "trabajo": {
+      "cargo": "Project Manager",
+      "empresa": "Populi Foundation"
+    },
+    "experiencia_areas": [
+      "Gestión de proyectos",
+      "Finanzas",
+      "Blockchain"
+    ],
+    "deseos_aprendizaje": [
+      "Gestión de proyectos"
+    ],
+    "experiencia_eventos": [
+      "Sí, tengo experiencia"
+    ],
+    "fortaleza": [
+      "Networking"
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/alyberbetty?igsh=N3kyZno4M3kxcXhi&utm_source=qr",
+      "linkedin": "https://www.linkedin.com/in/alisonberbetty?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/10-Alison.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/11.png",
+    "area_colaboracion": [
+      "Investigación y desarrollo",
+      "Legal"
+    ],
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Organización de eventos",
+      "Comunicación"
+    ],
+    "motivacion": [
+      "Me interesa organizar eventos y conocer personas del sector tech"
+    ],
+    "taller_charla": [
+      "Liderazgo, potenciar el trabajo en equipo y motivación en el equipo"
+    ],
+    "herramientas_tecnologias": [
+      "Excel",
+      "Metodologías ágiles",
+      "Gestión de proyectos",
+      "Evaluación de proyectos"
+    ],
+    "dias_disponibles": [
+      "Miércoles",
+      "Jueves",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Mañana, Noche"
+  },
+  {
+    "id": 12,
+    "nombre_completo": "Yohanka Vargas Flores",
+    "correo_electronico": "yohankavf@gmail.com",
+    "numero_contacto": "+59177040354",
+    "sobre_ti": "Titulada en ingeniería de sistemas",
+    "ocupacion_actual": "Profesional",
+    "estudios": {
+      "carrera": "Ingeniería de Sistemas",
+      "universidad": "UTEPSA"
+    },
+    "trabajo": {
+      "cargo": "Desarrolladora",
+      "empresa": "N/A"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Desarrollo móvil",
+      "Ciencia de Datos"
+    ],
+    "deseos_aprendizaje": [
+      "Inteligencia Artificial",
+      "Ciberseguridad",
+      "Gestión de proyectos",
+      "Soporte técnico / IT"
+    ],
+    "experiencia_eventos": [
+      "Sí, pero de manera ocasional"
+    ],
+    "fortaleza": [
+      "Mi mayor fortaleza es poder implementar mis experiencia en los proyectos que realizo"
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/yohanka_vargas?igsh=MWhoaTB1Nng1cXNnag==",
+      "linkedin": "https://bo.linkedin.com/in/yohanka-vargas-flores-1ab782211"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/YohankaVargas.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/12.png",
+    "area_colaboracion": [
+      "Marketing",
+      "Investigación y desarrollo"
+    ],
+    "habilidades_blandas": [
+      "Tengo capacidades de liderazgo",
+      "Actitud positiva",
+      "Adaptación al cambio"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sí, ahora sobre appsheet porque es lo que más domino ahorita"
+    ],
+    "herramientas_tecnologias": [
+      "Appsheet"
+    ],
+    "dias_disponibles": [
+      "Martes",
+      "Jueves",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 13,
+    "nombre_completo": "ESTHER ADRIANA POQUECHOQUE GUTIERREZ",
+    "correo_electronico": "estherg9722@gmail.com",
+    "numero_contacto": "+59177887825",
+    "sobre_ti": "Ingeniero en Informática con experiencia en testing de software, administración de infraestructura en Kubernetes y diseño UX/UI. Especializado en herramientas de monitoreo y análisis. Apasionado por la optimización de sistemas y la mejora de la experiencia del usuario a través de diseño intuitivo y estrategias basadas en datos.",
+    "ocupacion_actual": "Otro",
+    "estudios": {
+      "carrera": "Ingeniería en Informática",
+      "universidad": "n/a"
+    },
+    "trabajo": {
+      "cargo": "n/A",
+      "empresa": "n/A"
+    },
+    "experiencia_areas": [
+      "Ciencia de Datos",
+      "Soporte técnico / IT"
+    ],
+    "deseos_aprendizaje": [
+      "Ciberseguridad",
+      "Gestión de proyectos",
+      "Marketing Digital"
+    ],
+    "experiencia_eventos": [
+      "No, pero me gustaría aprender"
+    ],
+    "fortaleza": [
+      "Mi mayor fortaleza es mi capacidad de combinar conocimientos técnicos con habilidades de comunicación. Esto me permite comprender las necesidades de los clientes y explicar soluciones tecnológicas de manera clara y efectiva, facilitando la toma de decisiones y fortaleciendo la relación comercial."
+    ],
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/esther-gutierrez-inginformatica/"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/11-Adriana.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/13.png",
+    "area_colaboracion": [
+      "Marketing",
+      "Finanzas"
+    ],
+    "habilidades_blandas": [
+      "Trabajo en equipo"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Por ahora no, pero en futuro sobre ciencias de datos"
+    ],
+    "herramientas_tecnologias": [
+      "Python",
+      "Angular",
+      "Linux"
+    ],
+    "dias_disponibles": [
+      "Martes",
+      "Miércoles",
+      "Jueves"
+    ],
+    "horarios_disponibles": "Tarde"
+  },
+  {
+    "id": 14,
+    "nombre_completo": "Jose Daniel Mendoza Guzman",
+    "correo_electronico": "Jdanielmendoza987@gmail.com",
+    "numero_contacto": "+59171024318",
+    "sobre_ti": "Soy desarrollador web, especialista en React, y diseñador 3D. Apasionado por la tecnología, siempre busco aprender y crear soluciones innovadoras.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería en Informática",
+      "universidad": "n/a"
+    },
+    "trabajo": {
+      "cargo": "Diseñador 3D",
+      "empresa": "n/a"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Gestión de proyectos",
+      "UX/UI"
+    ],
+    "deseos_aprendizaje": [
+      "Desarrollo web",
+      "Desarrollo móvil",
+      "Inteligencia Artificial",
+      "Finanzas"
+    ],
+    "experiencia_eventos": [
+      "Sí, tengo experiencia"
+    ],
+    "fortaleza": [
+      "Mi mayor fortaleza es mi capacidad para aprender rápido y adaptarme a nuevos desafíos, lo que me permite encontrar soluciones creativas y trabajar de manera eficaz en equipo."
+    ],
+    "links": {
+      "instagram": "http://instagram.com/daniel_mendoza.dev",
+      "linkedin": "https://www.linkedin.com/in/danielmendozaguzman/"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/JoseDanielMendoza.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/14.png",
+    "area_colaboracion": [
+      "Operaciones",
+      "Logística"
+    ],
+    "habilidades_blandas": [
+      "Trabajo en equipo",
+      "Aprendo rápido",
+      "Resuelvo problemas con creatividad"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sí, me encantaría dar un taller sobre cómo fusionar React con diseño 3D utilizando Blender y Three.js. Sería una gran oportunidad para explorar cómo estas tecnologías pueden integrarse para crear experiencias interactivas y visualmente impactantes."
+    ],
+    "herramientas_tecnologias": [
+      "Desarrollador web Frontend",
+      "Javascript",
+      "React",
+      "Express",
+      "WebSocket",
+      "PostgreSQL",
+      "SQLserver",
+      "Diseño 3D",
+      "Typescript",
+      "Docker"
+    ],
+    "dias_disponibles": [
+      "Viernes",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Mañana, Noche"
+  },
+  {
+    "id": 15,
+    "nombre_completo": "Luishiño Pericena Choque",
+    "correo_electronico": "pericena12@gmail.com",
+    "numero_contacto": "+591 61320208",
+    "sobre_ti": "Estudiante de Ingeniería de Sistemas con especialidad en Ciberseguridad. Experiencia en desarrollo de software, con interés en ciberseguridad, hacking ético y análisis de código. Disfruto enseñar desarrollo web y seguridad informática, además de compartir conocimientos en mi blog lpericena.blogspot.com.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería de Sistemas",
+      "universidad": "UAGRM"
+    },
+    "trabajo": {
+      "cargo": "Estudiante - Instructor",
+      "empresa": "WHITE HACKS (Ciberseguridad)"
+    },
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Inteligencia Artificial",
+      "Ciberseguridad",
+      "UX/UI"
+    ],
+    "deseos_aprendizaje": [
+      "Desarrollo móvil",
+      "Inteligencia Artificial",
+      "Ciencia de Datos",
+      "UX/UI"
+    ],
+    "experiencia_eventos": [
+      "No, pero me gustaría aprender"
+    ],
+    "fortaleza": [
+      "Mi mayor fortaleza es la capacidad de resolver problemas de manera eficiente, combinando habilidades técnicas y pensamiento crítico."
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/lpericena/",
+      "linkedin": "https://www.linkedin.com/in/lpericena/",
+      "facebook": "https://www.facebook.com/profile.php?id=100009309755063",
+      "x": "https://x.com/Lpericena"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/Luishino-Pericena.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/15.png",
+    "area_colaboracion": [
+      "Investigación y desarrollo"
+    ],
+    "habilidades_blandas": [
+      "Comunicación efectiva",
+      "Trabajo en equipo",
+      "Resolución de problemas",
+      "Pensamiento crítico",
+      "Adaptabilidad"
+    ],
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente"
+    ],
+    "taller_charla": [
+      "Me gustaría dar un taller o charla sobre temas relacionados con desarrollo web y ciberseguridad."
+    ],
+    "herramientas_tecnologias": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "React",
+      "Astro",
+      "Tailwind CSS",
+      "Git",
+      "Docker",
+      "Figma",
+      "Wireshark",
+      "SonarCloud",
+      "Tesseract.js",
+      "Laravel",
+      ".NET"
+    ],
+    "dias_disponibles": [
+      "Viernes"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 16,
+    "nombre_completo": "Wendy Raquel Laruta Coronel",
+    "correo_electronico": "wendy20laruta03@gmail.com",
+    "numero_contacto": "+591 76365237",
+    "sobre_ti": "A lo largo de mi carrera he tenido la oportunidad de liderar proyectos de comunicación, donde la colaboración y el trabajo en equipo han sido esenciales. Mis habilidades de liderazgo pueden ser un valor agregado en proyectos tecnológicos, especialmente aquellos enfocados en la inclusión y el empoderamiento de las mujeres. Estoy muy motivada a aplicar mis conocimientos en este contexto y crecer en nuevas áreas relacionadas con la tecnología.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ciencias de la Comunicación",
+      "universidad": "UAGRM"
+    },
+    "trabajo": {
+      "cargo": "Asistente de RRSS",
+      "empresa": "Red Bolivisión"
+    },
+    "experiencia_areas": [
+      "Gestión de proyectos",
+      "Marketing Digital",
+      "Oratoria",
+      "Presentaciones Digitales"
+    ],
+    "deseos_aprendizaje": [
+      "Desarrollo web",
+      "Desarrollo móvil",
+      "Inteligencia Artificial",
+      "Ciberseguridad",
+      "UX/UI"
+    ],
+    "experiencia_eventos": [
+      "Sí, pero de manera ocasional"
+    ],
+    "fortaleza": [
+      "Decidida"
+    ],
+    "links": {
+      "instagram": "https://www.instagram.com/wendy_elece?igsh=M2g4bzVrMmd1NG95",
+      "linkedin": "www.linkedin.com/in/wendy-laruta",
+      "facebook": "https://www.facebook.com/wendy.laruta?mibextid=ZbWKwL",
+      "x": ""
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/WendyRaquelLaruta.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/16.png",
+    "area_colaboracion": [
+      "Marketing"
+    ],
+    "habilidades_blandas": [
+      "Trabajo en Equipo",
+      "Liderazgo",
+      "Compromiso",
+      "Resolución de Problemas"
+    ],
+    "motivacion": [
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ],
+    "taller_charla": [
+      "Sería un taller a cerca de cómo entretener a la audiencia, interactuando con ella, se podría resumir a 'Oratoria'."
+    ],
+    "herramientas_tecnologias": [
+      "Adobe Premier",
+      "Cap Cut"
+    ],
+    "dias_disponibles": [
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche"
+  },
+  {
+    "id": 17,
+    "nombre_completo": "Natalia Bolivia Durán Oliva",
+    "correo_electronico": "duranolivanatalia42@gmail.com",
+    "numero_contacto": "+59178482245",
+    "sobre_ti": "Desarrollador de software con 4 años de experiencia.",
+    "ocupacion_actual": "Desarrollador de Software en Banco Ganadero",
+    "estudios": {
+      "carrera": "Profesional",
+      "universidad": "Universidad Evangélica Boliviana"
+    },
+    "trabajo": {
+      "cargo": "Desarrollador de Software",
+      "empresa": "Banco Ganadero"
+    },
+    "links": {
+      "instagram": "https://www.instagram.com/natalia_duran_01/",
+      "linkedin": "https://www.linkedin.com/in/natalia-duran-oliva/",
+      "facebook": "https://www.facebook.com/profile.php?id=100005247349463"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/NataliaDuran.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/17.png",
+    "area_colaboracion": "Marketing",
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Desarrollo móvil",
+      "Ciberseguridad",
+      "Gestión de proyectos",
+      "Soporte técnico / IT"
+    ],
+    "deseos_aprendizaje": "Desarrollo web, Desarrollo móvil, Inteligencia Artificial, Ciencia de Datos, Ciberseguridad, Gestión de proyectos, Marketing Digital, UX/UI, Soporte técnico / IT, Finanzas",
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Comunicación",
+      "Trabajo en equipo",
+      "Resolución de problemas"
+    ],
+    "herramientas_tecnologias": [
+      "Node.js",
+      "NestJS",
+      "Spring Boot",
+      "Java",
+      "C#",
+      ".NET",
+      "Flutter",
+      "React",
+      "TypeScript",
+      "Android"
+    ],
+    "experiencia_eventos": "Sí, tengo experiencia",
+    "fortaleza": "Capacidad de aprender",
+    "taller_charla": "Sí",
+    "dias_disponibles": [
+      "Miércoles"
+    ],
+    "horarios_disponibles": "Noche",
+    "asistido_eventos": "Sí, a ambos (WTM y GDG)",
+    "conocimiento_comunidad": "Redes sociales (Instagram, Twitter, Facebook, LinkedIn)",
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ]
+  },
+  {
+    "id": 18,
+    "nombre_completo": "Andrea Geraldinne Laruta Coronel",
+    "correo_electronico": "andreageraldinne@gmail.com",
+    "numero_contacto": "+59176357580",
+    "sobre_ti": "Desde pequeña metida en videojuegos de Digimon y de grande interesada en un campo que sigue innovando, en busca de voluntarios apoyados en la tecnología, la enseñanza de nuevas e innovadoras experiencias en los campos Tech. Voluntaria, embajadora Women Techmaker, Microsoft Learn Student Ambassador y guía de nuev@s voluntarios.",
+    "ocupacion_actual": "Analista de Sistemas y Proyectos en Linkser S.A.",
+    "estudios": {
+      "carrera": "Ingeniería en Sistemas",
+      "universidad": "No especificado"
+    },
+    "trabajo": {
+      "cargo": "Analista de Sistemas y Proyectos",
+      "empresa": "Linkser S.A."
+    },
+    "links": {
+      "instagram": "https://www.instagram.com/andrealaruta_?wt.mc_id=studentamb_139591",
+      "linkedin": "https://www.linkedin.com/in/andrealaruta?wt.mc_id=studentamb_139591",
+      "facebook": "https://www.facebook.com/AndreaGeraldinneLarutaC/?wt.mc_id=studentamb_139591",
+      "twitter": "https://x.com/AndreaG_Latina?wt.mc_id=studentamb_139591"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/AndreaGeraldinneLaruta.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/18.png",
+    "area_colaboracion": "Marketing, Operaciones, Investigación y Desarrollo, Logística, Finanzas, Legal",
+    "experiencia_areas": [
+      "Desarrollo web",
+      "Desarrollo móvil",
+      "Marketing Digital",
+      "Manejo de Conflictos"
+    ],
+    "deseos_aprendizaje": "Inteligencia Artificial, Ciencia de Datos, Ciberseguridad, Gestión de Proyectos, UX/UI",
+    "habilidades_blandas": [
+      "Empatía",
+      "Liderazgo",
+      "Trabajo en equipo",
+      "Manejo de Conflictos"
+    ],
+    "herramientas_tecnologias": [
+      "Java",
+      "Spring Boot",
+      "Docker",
+      "Kafka",
+      "Apache Kafka"
+    ],
+    "experiencia_eventos": "Sí, tengo experiencia",
+    "fortaleza": "Tener la habilidad de generar conciencia en la comunidad, esparcir tecnología con vibras bonitas, llevar la satisfacción de ver crecer a los demás, verlos brillar y a la vez crecer uno mismo.",
+    "taller_charla": "Sí, sobre IA en Google Cloud",
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Mañana",
+    "asistido_eventos": "Sí, a ambos (WTM y GDG)",
+    "conocimiento_comunidad": "No especificado",
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo",
+      "Guiar a otros a conseguir sus metas con ayuda de la comunidad"
+    ]
+  },
+  {
+    "id": 19,
+    "nombre_completo": "Elva Izumi Rodriguez Kuba",
+    "correo_electronico": "elvaizumi@gmail.com",
+    "numero_contacto": "+59178594638",
+    "sobre_ti": "Mi primer acercamiento a la tecnología fue a través de la programación; aprendí programación front-end antes de ingresar a la universidad. Gracias a esta experiencia, descubrí el área de UX/UI Design, un campo que se alinea con mi carrera y habilidades: el aporte que otorga un producto digital, el enfoque en el usuario y su experiencia y mi sentido de estética.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Diseño Integral",
+      "universidad": "UAGRM"
+    },
+    "trabajo": {
+      "cargo": "Ninguno",
+      "empresa": "N/A"
+    },
+    "links": {
+      "instagram": "https://www.instagram.com/elvaizumi/",
+      "linkedin": "https://www.linkedin.com/in/elvaizumi/"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/Elva.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/19.png",
+    "area_colaboracion": "Investigación y Desarrollo",
+    "experiencia_areas": [
+      "Desarrollo web",
+      "UX/UI"
+    ],
+    "deseos_aprendizaje": "Desarrollo web, Inteligencia Artificial, Gestión de proyectos, UX/UI",
+    "habilidades_blandas": [
+      "Liderazgo",
+      "Organización",
+      "Compromiso",
+      "Resolución de problemas",
+      "Atención al detalle",
+      "Sentido de estética"
+    ],
+    "herramientas_tecnologias": [
+      "Illustrator",
+      "Figma",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "experiencia_eventos": "Sí, pero de manera ocasional",
+    "fortaleza": "La organización y la manera de ejecutar las cosas con compromiso y claridad sobre el trabajo que realizo.",
+    "taller_charla": "Sí, un taller sobre Diseño UX/UI y cómo este puede aportar mucho a que el usuario se sienta satisfecho con su experiencia de uso en productos digitales.",
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Noche",
+    "asistido_eventos": "Sí, a eventos de GDG",
+    "conocimiento_comunidad": "Recomendación de un amigo/a",
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ]
+  },
+  {
+    "id": 20,
+    "nombre_completo": "Maria Elizabeth Andrade Barron",
+    "correo_electronico": "bylizzie.bo@gmail.com",
+    "numero_contacto": "+59178140925",
+    "sobre_ti": "No tengo experiencia en el área tecnológica, sin embargo, me apasiona estar involucrada en el área de tecnología, rodearme de personas muy capacitadas en ese ámbito, lo cual me llena de inspiración. Me gusta ayudar a coordinar y organizar eventos.",
+    "ocupacion_actual": "Profesional",
+    "estudios": {
+      "carrera": "Ingeniería Comercial",
+      "universidad": "UDABOL"
+    },
+    "trabajo": {
+      "cargo": "Contact Center",
+      "empresa": "N/A"
+    },
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/elizabeth-andrade-88233015b"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/ElizabethAndrade.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/20.png",
+    "area_colaboracion": "Marketing, Logística",
+    "experiencia_areas": [
+      "Trabajo en equipo"
+    ],
+    "deseos_aprendizaje": "Ciencia de Datos, Gestión de proyectos",
+    "habilidades_blandas": [
+      "Trabajo con enfoque y dedicación",
+      "Trabajo en equipo",
+      "Empatía",
+      "Colaboración con los demás",
+      "Pensamiento analítico",
+      "Creatividad"
+    ],
+    "herramientas_tecnologias": [
+      "SD"
+    ],
+    "experiencia_eventos": "Sí, tengo experiencia",
+    "fortaleza": "Mi enfoque, dedicación, responsabilidad y honestidad.",
+    "taller_charla": "Sí, sobre empoderamiento a través del intelecto, pensamiento estratégico y relaciones interpersonales.",
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Tarde",
+    "asistido_eventos": "Sí, a eventos de WTM",
+    "conocimiento_comunidad": "Redes sociales (Instagram, Twitter, Facebook, LinkedIn)",
+    "motivacion": [
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech",
+      "Quiero aprender más sobre liderazgo y trabajo en equipo"
+    ]
+  },
+  {
+    "id": 21,
+    "nombre_completo": "Silvia Irene Colque Lopez",
+    "correo_electronico": "colques541@gmail.com",
+    "numero_contacto": "+59169219846",
+    "sobre_ti": "Mi camino en tecnología ha estado marcado por mi participación en becas como DataCamp y Tecnólogicas, donde aprendí desarrollo web e ingeniería de datos. Desde entonces, he continuado formándome a través de becas relacionadas con datos y desarrollo web. También me apasiona el mundo de la inteligencia artificial. He impartido talleres de Figma porque creo en la importancia de que las personas puedan plasmar sus ideas y planificarlas en un prototipo sin temor a no saber programar. Disfruto liderar proyectos en las ferias de ciencias de mi facultad, donde hasta ahora he logrado obtener siempre el primer o segundo lugar con mis proyectos. Además, he participado en hackatones en la parte de prototipado con Figma, aportando soluciones innovadoras. Me gusta trabajar en equipo y asegurarme de que los proyectos avancen de la mejor manera posible, aportando todo lo que esté dentro de mis capacidades para lograrlo.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería Informática",
+      "universidad": "N/A"
+    },
+    "trabajo": {
+      "cargo": "Core Team",
+      "empresa": "YAIS"
+    },
+    "links": {
+      "instagram": "https://www.instagram.com/irene_0wo/",
+      "linkedin": "https://www.linkedin.com/in/colque-silvia-3825902b3/"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/ColqueSilvia.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/21.png",
+    "area_colaboracion": "Investigación y desarrollo",
+    "experiencia_areas": [
+      "Ingeniería de Datos"
+    ],
+    "deseos_aprendizaje": "Inteligencia Artificial, Ciencia de Datos, Ingeniería de Datos",
+    "habilidades_blandas": [
+      "Buena comunicación",
+      "Generar confianza en las personas",
+      "Escuchar opiniones y feedback",
+      "Ir directo a los puntos clave al trabajar"
+    ],
+    "herramientas_tecnologias": [
+      "SQL",
+      "Figma"
+    ],
+    "experiencia_eventos": "Sí, pero de manera ocasional",
+    "fortaleza": "Soy muy perseverante y paciente, siempre busco la mejor manera de hacer las cosas.",
+    "taller_charla": "A futuro sobre ingeniería de datos, aún estoy en el proceso de especializarme ahí.",
+    "dias_disponibles": [
+      "Sábado"
+    ],
+    "horarios_disponibles": "Tarde",
+    "asistido_eventos": "Sí, a eventos de GDG",
+    "conocimiento_comunidad": "Recomendación de un amigo/a",
+    "motivacion": [
+      "Quiero contribuir a la comunidad y ayudar a más mujeres en tecnología",
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente"
+    ]
+  },
+  {
+    "id": 22,
+    "nombre_completo": "Ariane Somoza Rocha",
+    "correo_electronico": "arianesomoza@gmail.com",
+    "numero_contacto": "+59179009507",
+    "sobre_ti": "Soy una persona interesada en aprender y colaborar, me he involucrado en diferentes eventos y bootcamps para avanzar dentro de este ámbito.",
+    "ocupacion_actual": "Estudiante",
+    "estudios": {
+      "carrera": "Ingeniería en Sistemas",
+      "universidad": "N/A"
+    },
+    "trabajo": {
+      "cargo": "No",
+      "empresa": "N/A"
+    },
+    "links": {
+      "instagram": "https://www.instagram.com/arianesomoza/",
+      "linkedin": "https://www.linkedin.com/in/ariane-somoza-rocha/"
+    },
+    "fotografia": "https://nlbol.github.io/uagrm/perfil/ArianeSomoza.jpg",
+    "qr": "https://nlbol.github.io/uagrm/qr/22.png",
+    "area_colaboracion": "Marketing, Logística",
+    "experiencia_areas": [
+      "Marketing Digital"
+    ],
+    "deseos_aprendizaje": "Desarrollo web, Desarrollo móvil, Ciberseguridad",
+    "habilidades_blandas": [
+      "Organización"
+    ],
+    "herramientas_tecnologias": [
+      "Excel",
+      "Figma",
+      "Python",
+      "Dart",
+      "JavaScript"
+    ],
+    "experiencia_eventos": "Sí, tengo experiencia",
+    "fortaleza": "Mi organización.",
+    "taller_charla": "No",
+    "dias_disponibles": [
+      "Martes",
+      "Jueves",
+      "Sábado"
+    ],
+    "horarios_disponibles": "Mañana, Noche",
+    "asistido_eventos": "Sí, a ambos (WTM y GDG)",
+    "conocimiento_comunidad": "Recomendación de un amigo/a",
+    "motivacion": [
+      "Quiero desarrollar nuevas habilidades y crecer profesionalmente",
+      "Me interesa organizar eventos y conocer personas del sector tech"
+    ]
+  }
+]

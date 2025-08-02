@@ -1,0 +1,52 @@
+{
+  "contactInfo": {
+    "address": "Nucleo Linux UAGRM",
+    "phone": "+591",
+    "email": "nucleolinuxsantacruz@gmail.com"
+  },
+  "officeHours": [
+    {
+      "day": "Lunes",
+      "time": "12:00 - 16:00",
+      "inCharge": "Juan Pérez",
+      "notes": "Horario habitual de atención."
+    },
+    {
+      "day": "Martes",
+      "time": "12:00 - 18:00",
+      "inCharge": "Maria Rodríguez",
+      "notes": "Horario extendido para consultas especiales."
+    },
+    {
+      "day": "Miércoles",
+      "time": "12:00 - 16:00",
+      "inCharge": "Juan Pérez",
+      "notes": "Horario habitual de atención."
+    },
+    {
+      "day": "Jueves",
+      "time": "12:00 - 16:00",
+      "inCharge": "Maria Rodríguez",
+      "notes": "Horario habitual de atención."
+    },
+    {
+      "day": "Viernes",
+      "time": "12:00 - 16:00",
+      "inCharge": "Juan Pérez",
+      "notes": "Horario habitual de atención."
+    }
+  ],
+  "location": {
+    "title": "Visítanos",
+    "description": "Aquí puedes ver el ambiente en el que trabajamos, con una ubicación estratégica",
+    "image": "",
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14616.924823978839!2d-63.1928788!3d-17.7785954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e98fd84cfbf5:0x25568a4abf0e4d11!2zTnVjbGVvIExpbnV4IFVBR01S!5e0!3m2!1ses-419!2sbo!4v1681958365270!5m2!1ses-419!2sbo",
+    "addressDetails": {
+      "street": "Nucleo Linux UAGRM",
+      "city": "Santa Cruz",
+      "state": "Santa Cruz",
+      "country": "Bolivia",
+      "zipCode": "12345"
+    }
+  }
+}

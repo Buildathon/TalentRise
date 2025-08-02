@@ -1,0 +1,16 @@
+{
+  "banner": {
+    "title": "TalentHub - Invierte en el Futuro",
+    "subtitle": "Conecta con el talento que transforma",
+    "description": "Impulsa ideas, apoya creadores y construye oportunidades",
+    "quote": "“Cada inversión en talento es una apuesta por el futuro”",
+    "ctaText": "Explorar Talentos",
+    "ctaLink": "/explorar",
+    "images": [
+      "/assets/banner/talent1.jpg",
+      "/assets/banner/talent2.jpg",
+      "/assets/banner/talent3.jpg",
+      "/assets/banner/talent4.jpg"
+    ]
+  }
+}

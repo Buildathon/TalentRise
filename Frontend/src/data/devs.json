@@ -1,0 +1,169 @@
+[
+  {
+    "id": 1,
+    "nombre_completo": "Ana María Torres",
+    "correo_electronico": "ana.torres@email.com",
+    "numero_contacto": "+59170012345",
+    "sobre_ti": "Artista visual especializada en pintura contemporánea y muralismo.",
+    "ocupacion_actual": "Artista Plástica",
+    "estudios": {
+      "carrera": "Licenciatura en Bellas Artes",
+      "universidad": "Universidad de Arte y Diseño"
+    },
+    "trabajo": {
+      "cargo": "Artista independiente",
+      "empresa": ""
+    },
+    "links": {
+      "instagram": "https://instagram.com/anatorresart",
+      "linkedin": "",
+      "facebook": "",
+      "x": ""
+    },
+    "fotografia": "https://example.com/fotos/ana_torres.jpg",
+    "area_colaboracion": "Arte y Cultura",
+    "experiencia_areas": [
+      "Pintura",
+      "Muralismo",
+      "Diseño gráfico",
+      "Exposiciones"
+    ],
+    "deseos_aprendizaje": "Explorar técnicas digitales para complementar mi arte tradicional.",
+    "habilidades_blandas": [
+      "Creatividad",
+      "Trabajo en equipo",
+      "Comunicación"
+    ],
+    "herramientas_tecnologias": [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Procreate"
+    ],
+    "experiencia_eventos": "Sí, exposiciones locales e internacionales.",
+    "fortaleza": "Innovación en el uso de materiales y técnicas mixtas.",
+    "taller_charla": "Sí, sobre técnicas de muralismo y expresión artística.",
+    "dias_disponibles": [
+      "Sábado",
+      "Domingo"
+    ],
+    "horarios_disponibles": "Mañana y tarde",
+    "asistido_eventos": "Festivales de arte y ferias culturales",
+    "conocimiento_comunidad": "Redes sociales, ferias de arte, colaboraciones",
+    "motivacion": [
+      "Impulsar el arte local",
+      "Conectar con otros artistas",
+      "Aprender nuevas técnicas"
+    ]
+  },
+  {
+    "id": 2,
+    "nombre_completo": "Carlos Jiménez",
+    "correo_electronico": "cjimenez@email.com",
+    "numero_contacto": "+59178045678",
+    "sobre_ti": "Atleta profesional en atletismo, especializado en pruebas de velocidad.",
+    "ocupacion_actual": "Deportista Profesional",
+    "estudios": {
+      "carrera": "Licenciatura en Ciencias del Deporte",
+      "universidad": "Universidad Nacional de Deportes"
+    },
+    "trabajo": {
+      "cargo": "Atleta",
+      "empresa": "Equipo Nacional de Atletismo"
+    },
+    "links": {
+      "instagram": "https://instagram.com/carlos_jimenez_runner",
+      "linkedin": "",
+      "facebook": "",
+      "x": ""
+    },
+    "fotografia": "https://example.com/fotos/carlos_jimenez.jpg",
+    "area_colaboracion": "Deportes",
+    "experiencia_areas": [
+      "Atletismo",
+      "Entrenamiento físico",
+      "Nutrición deportiva"
+    ],
+    "deseos_aprendizaje": "Mejorar técnicas de recuperación y entrenamiento avanzado.",
+    "habilidades_blandas": [
+      "Disciplina",
+      "Trabajo en equipo",
+      "Liderazgo"
+    ],
+    "herramientas_tecnologias": [
+      "Apps de entrenamiento",
+      "Wearables deportivos"
+    ],
+    "experiencia_eventos": "Participación en competencias nacionales e internacionales.",
+    "fortaleza": "Resistencia y velocidad bajo presión.",
+    "taller_charla": "Sí, sobre entrenamiento y mentalidad deportiva.",
+    "dias_disponibles": [
+      "Lunes",
+      "Miércoles",
+      "Viernes"
+    ],
+    "horarios_disponibles": "Mañana",
+    "asistido_eventos": "Campeonatos nacionales e internacionales",
+    "conocimiento_comunidad": "Clubes deportivos, redes sociales",
+    "motivacion": [
+      "Promover el deporte y vida saludable",
+      "Inspirar a jóvenes atletas",
+      "Mejorar rendimiento personal"
+    ]
+  },
+  {
+    "id": 3,
+    "nombre_completo": "Lucía Méndez",
+    "correo_electronico": "lucia.mendez@email.com",
+    "numero_contacto": "+59171234567",
+    "sobre_ti": "Emprendedora en moda sostenible y diseño textil artesanal.",
+    "ocupacion_actual": "Emprendedora",
+    "estudios": {
+      "carrera": "Diseño de Modas",
+      "universidad": "Instituto de Diseño y Moda"
+    },
+    "trabajo": {
+      "cargo": "Fundadora",
+      "empresa": "EcoModa S.A."
+    },
+    "links": {
+      "instagram": "https://instagram.com/ecomodabols",
+      "linkedin": "",
+      "facebook": "",
+      "x": ""
+    },
+    "fotografia": "https://example.com/fotos/lucia_mendez.jpg",
+    "area_colaboracion": "Emprendimiento",
+    "experiencia_areas": [
+      "Diseño textil",
+      "Moda sostenible",
+      "Marketing digital",
+      "Ventas"
+    ],
+    "deseos_aprendizaje": "Aprender sobre comercio electrónico y estrategias de marketing.",
+    "habilidades_blandas": [
+      "Creatividad",
+      "Gestión de proyectos",
+      "Comunicación"
+    ],
+    "herramientas_tecnologias": [
+      "Shopify",
+      "Canva",
+      "Redes sociales"
+    ],
+    "experiencia_eventos": "Participación en ferias de moda y emprendimiento.",
+    "fortaleza": "Capacidad para innovar y conectar con clientes.",
+    "taller_charla": "Sí, sobre moda sostenible y emprendimiento.",
+    "dias_disponibles": [
+      "Martes",
+      "Jueves"
+    ],
+    "horarios_disponibles": "Tarde",
+    "asistido_eventos": "Ferias y exposiciones de emprendimiento",
+    "conocimiento_comunidad": "Redes sociales y comunidades de emprendimiento",
+    "motivacion": [
+      "Fomentar moda ética y sostenible",
+      "Impulsar emprendimientos locales",
+      "Crear redes colaborativas"
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "contactInfo": {
+    "address": "Nucleo Linux UAGRM",
+    "phone": "+591",
+    "email": "nucleolinuxsantacruz@gmail.com"
+  },
+  "socialLinks": {
+    "facebook": "https://www.facebook.com/nucleolinuxuagrmsz/",
+    "twitter": "#",
+    "instagram": "#"
+  },
+  "image": "../../src/assets/contact/ambiente-2.jpg",
+  "visitTitle": "Visítanos en el Núcleo Linux UAGRM",
+  "visitDescription": "Aquí puedes ver el ambiente en el que trabajamos."
+}
