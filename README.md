@@ -12,11 +12,11 @@
 ---
 
 ## 🧑‍💻 Equipo
-👨‍💻 Fernando — Frontend & Coordinación
-👩‍🎨 Nadia — UI/UX y diseño visual
-📊 Anabel — Analista de finanzas
-👨‍🚀 Jose Daniel — Smart Contracts, Backend & API Express
-👨‍💻 Luishiño — Frontend & Coordinación técnica
+- 👨‍💻 Fernando — Frontend & Coordinación
+- 👩‍🎨 Nadia — UI/UX y diseño visual
+- 📊 Anabel — Analista de finanzas
+- 👨‍🚀 Jose Daniel — Smart Contracts, Backend & API Express
+- 👨‍💻 Luishiño — Frontend & Coordinación técnica
 
 
 ---
