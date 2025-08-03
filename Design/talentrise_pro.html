@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentRise Pro - Plataforma de Inversión en Talento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Variables CSS profesionales */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --border-color: #333;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            max-width: 375px;
+            margin: 20px auto;
+            background: var(--dark-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            min-height: 667px;
+        }
+
+        /* Header profesional */
+        .app-header {
+            background: var(--primary-gradient);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .app-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .app-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Navegación mejorada */
+        .nav-tabs {
+            display: flex;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .nav-tab.active {
+            border-bottom-color: #7840bd;
+            color: #5a0d91;
+        }
+
+        /* Pantallas */
+        .screen {
+            display: none;
+            min-height: 500px;
+        }
+
+        .screen.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dashboard principal */
+        .dashboard {
+            padding: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Sección de talentos trending */
+        .trending-section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .talent-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .talent-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .talent-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .talent-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .talent-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .talent-info p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .talent-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Botones de acción */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Marketplace */
+        .marketplace-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .marketplace-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .marketplace-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 120px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .item-info {
+            padding: 16px;
+        }
+
+        .item-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .item-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #4facfe;
+        }
+
+        /* Portfolio */
+        .portfolio-chart {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .chart-placeholder {
+            width: 100%;
+            height: 200px;
+            background: var(--dark-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .portfolio-stat {
+            text-align: center;
+        }
+
+        .portfolio-stat .value {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-stat .label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Perfil profesional */
+        .profile-header {
+            background: var(--primary-gradient);
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border: 3px solid white;
+        }
+
+        .profile-info h2 {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .profile-info p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .profile-stat {
+            text-align: center;
+        }
+
+        .profile-stat .value {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .profile-stat .label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Modal profesional */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            max-width: 320px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Formularios profesionales */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Notificaciones */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-gradient);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            z-index: 1001;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 400px) {
+            .app-container {
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header profesional -->
+        <div class="app-header">
+            <h1><i class="fas fa-star"></i> TalentRise Pro</h1>
+            <p>Invierte en el futuro del entretenimiento</p>
+        </div>
+
+        <!-- Navegación por pestañas -->
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showScreen('dashboard')">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </div>
+            <div class="nav-tab" onclick="showScreen('marketplace')">
+                <i class="fas fa-store"></i> Marketplace
+            </div>
+            <div class="nav-tab" onclick="showScreen('portfolio')">
+                <i class="fas fa-wallet"></i> Portfolio
+            </div>
+            <div class="nav-tab" onclick="showScreen('profile')">
+                <i class="fas fa-user"></i> Perfil
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="screen active">
+            <div class="dashboard">
+                <!-- Estadísticas principales -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">$12,450</div>
+                        <div class="stat-label">Valor Total</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">+23.5%</div>
+                        <div class="stat-label">Rendimiento</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Talentos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$2,180</div>
+                        <div class="stat-label">Ganancias</div>
+                    </div>
+                </div>
+
+                <!-- Talentos trending -->
+                <div class="trending-section">
+                    <div class="section-title">
+                        <i class="fas fa-fire"></i> Trending
+                    </div>
+                    
+                    <div class="talent-card" onclick="showTalentModal('bad-bunny')">
+                        <div class="talent-header">
+                            <div class="talent-avatar">🎤</div>
+                            <div class="talent-info">
+                                <h3>Bad Bunny</h3>
+                                <p>Artista Urbano</p>
+                            </div>
+                        </div>
+                        <div class="talent-stats">
+                            <span>Token: $0.85</span>
+                            <span>+12.5%</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="investInTalent('bad-bunny')">
+                                <i class="fas fa-plus"></i> Invertir
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewDetails('bad-bunny')">
+                                <i class="fas fa-chart-bar"></i> Análisis
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="talent-card" onclick="showTalentModal('taylor-swift')">
+                        <div class="talent-header">
+                            <div class="talent-avatar">🎸</div>
+                            <div class="talent-info">
+                                <h3>Taylor Swift</h3>
+                                <p>Cantante & Compositora</p>
+                            </div>
+                        </div>
+                        <div class="talent-stats">
+                            <span>Token: $1.25</span>
+                            <span>+8.3%</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="investInTalent('taylor-swift')">
+                                <i class="fas fa-plus"></i> Invertir
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewDetails('taylor-swift')">
+                                <i class="fas fa-chart-bar"></i> Análisis
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="talent-card" onclick="showTalentModal('messi')">
+                        <div class="talent-header">
+                            <div class="talent-avatar">⚽</div>
+                            <div class="talent-info">
+                                <h3>Lionel Messi</h3>
+                                <p>Futbolista</p>
+                            </div>
+                        </div>
+                        <div class="talent-stats">
+                            <span>Token: $2.10</span>
+                            <span>+15.7%</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="investInTalent('messi')">
+                                <i class="fas fa-plus"></i> Invertir
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewDetails('messi')">
+                                <i class="fas fa-chart-bar"></i> Análisis
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marketplace -->
+        <div id="marketplace" class="screen">
+            <div class="marketplace-grid">
+                <div class="marketplace-item" onclick="showMarketplaceModal('nft-collection')">
+                    <div class="item-image">🎨</div>
+                    <div class="item-info">
+                        <div class="item-title">NFT Collection</div>
+                        <div class="item-price">$150</div>
+                    </div>
+                </div>
+
+                <div class="marketplace-item" onclick="showMarketplaceModal('exclusive-content')">
+                    <div class="item-image">🎬</div>
+                    <div class="item-info">
+                        <div class="item-title">Contenido Exclusivo</div>
+                        <div class="item-price">$75</div>
+                    </div>
+                </div>
+
+                <div class="marketplace-item" onclick="showMarketplaceModal('meet-greet')">
+                    <div class="item-image">🤝</div>
+                    <div class="item-info">
+                        <div class="item-title">Meet & Greet</div>
+                        <div class="item-price">$500</div>
+                    </div>
+                </div>
+
+                <div class="marketplace-item" onclick="showMarketplaceModal('merchandise')">
+                    <div class="item-image">👕</div>
+                    <div class="item-info">
+                        <div class="item-title">Merchandise</div>
+                        <div class="item-price">$45</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio -->
+        <div id="portfolio" class="screen">
+            <div class="portfolio-chart">
+                <div class="chart-placeholder">
+                    <i class="fas fa-chart-line" style="font-size: 48px; color: var(--text-secondary);"></i>
+                </div>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat">
+                        <div class="value">$8,250</div>
+                        <div class="label">Invertido</div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <div class="value">$12,450</div>
+                        <div class="label">Valor Actual</div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <div class="value">+50.9%</div>
+                        <div class="label">ROI</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: 20px;">
+                <div class="section-title">
+                    <i class="fas fa-briefcase"></i> Mis Inversiones
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-header">
+                        <div class="talent-avatar">🎤</div>
+                        <div class="talent-info">
+                            <h3>Bad Bunny</h3>
+                            <p>1,200 tokens</p>
+                        </div>
+                    </div>
+                    <div class="talent-stats">
+                        <span>Valor: $1,020</span>
+                        <span>+18.5%</span>
+                    </div>
+                </div>
+
+                <div class="talent-card">
+                    <div class="talent-header">
+                        <div class="talent-avatar">🎸</div>
+                        <div class="talent-info">
+                            <h3>Taylor Swift</h3>
+                            <p>800 tokens</p>
+                        </div>
+                    </div>
+                    <div class="talent-stats">
+                        <span>Valor: $1,000</span>
+                        <span>+12.3%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perfil -->
+        <div id="profile" class="screen">
+            <div class="profile-header">
+                <div class="profile-avatar">👤</div>
+                <div class="profile-info">
+                    <h2>Alex Johnson</h2>
+                    <p>Inversor Premium</p>
+                </div>
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <div class="value">$12,450</div>
+                        <div class="label">Portfolio</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="value">8</div>
+                        <div class="label">Talentos</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="value">+23.5%</div>
+                        <div class="label">ROI</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: 20px;">
+                <div class="section-title">
+                    <i class="fas fa-cog"></i> Configuración
+                </div>
+                
+                <div class="talent-card">
+                    <div class="talent-header">
+                        <div class="talent-avatar">💳</div>
+                        <div class="talent-info">
+                            <h3>Métodos de Pago</h3>
+                            <p>Gestiona tus formas de pago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="talent-card">
+                    <div class="talent-header">
+                        <div class="talent-avatar">🔔</div>
+                        <div class="talent-info">
+                            <h3>Notificaciones</h3>
+                            <p>Configura tus alertas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="talent-card">
+                    <div class="talent-header">
+                        <div class="talent-avatar">🔒</div>
+                        <div class="talent-info">
+                            <h3>Seguridad</h3>
+                            <p>Protege tu cuenta</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de inversión -->
+    <div id="investment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Invertir en Talento</div>
+                <button class="close-modal" onclick="closeModal('investment-modal')">&times;</button>
+            </div>
+            <form id="investment-form">
+                <div class="form-group">
+                    <label class="form-label">Cantidad a invertir (USD)</label>
+                    <input type="number" class="form-input" id="investment-amount" placeholder="0.00" min="10" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tokens que recibirás</label>
+                    <input type="text" class="form-input" id="tokens-received" readonly>
+                </div>
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-check"></i> Confirmar Inversión
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('investment-modal')">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notificaciones -->
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i> Operación completada exitosamente
+    </div>
+
+    <script>
+        // Sistema de navegación
+        function showScreen(screenId) {
+            // Ocultar todas las pantallas
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            
+            // Mostrar pantalla seleccionada
+            document.getElementById(screenId).classList.add('active');
+            
+            // Actualizar navegación
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Sistema de modales
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Funciones de inversión
+        function investInTalent(talentId) {
+            showModal('investment-modal');
+            
+            // Calcular tokens basado en el precio actual
+            const prices = {
+                'bad-bunny': 0.85,
+                'taylor-swift': 1.25,
+                'messi': 2.10
+            };
+            
+            const price = prices[talentId];
+            const amountInput = document.getElementById('investment-amount');
+            const tokensInput = document.getElementById('tokens-received');
+            
+            amountInput.addEventListener('input', function() {
+                const amount = parseFloat(this.value) || 0;
+                const tokens = (amount / price).toFixed(2);
+                tokensInput.value = tokens;
+            });
+        }
+
+        function showTalentModal(talentId) {
+            // Mostrar detalles del talento
+            showNotification('Cargando detalles del talento...');
+        }
+
+        function viewDetails(talentId) {
+            // Mostrar análisis detallado
+            showNotification('Abriendo análisis detallado...');
+        }
+
+        // Sistema de notificaciones
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Manejo del formulario de inversión
+        document.getElementById('investment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const amount = document.getElementById('investment-amount').value;
+            const tokens = document.getElementById('tokens-received').value;
+            
+            if (amount && tokens) {
+                showNotification(`¡Inversión de $${amount} realizada! Has comprado ${tokens} tokens.`);
+                closeModal('investment-modal');
+                
+                // Actualizar dashboard
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            }
+        });
+
+        // Funciones del marketplace
+        function showMarketplaceModal(itemId) {
+            const items = {
+                'nft-collection': 'Colección NFT exclusiva de Bad Bunny',
+                'exclusive-content': 'Contenido behind-the-scenes exclusivo',
+                'meet-greet': 'Meet & Greet virtual con el artista',
+                'merchandise': 'Merchandise oficial autografiado'
+            };
+            
+            showNotification(`Agregando ${items[itemId]} al carrito...`);
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular datos en tiempo real
+            setInterval(() => {
+                // Actualizar precios de tokens
+                const priceElements = document.querySelectorAll('.talent-stats span:first-child');
+                priceElements.forEach(element => {
+                    const currentPrice = parseFloat(element.textContent.split('$')[1]);
+                    const change = (Math.random() - 0.5) * 0.1; // ±5% cambio
+                    const newPrice = (currentPrice * (1 + change)).toFixed(2);
+                    element.textContent = `Token: $${newPrice}`;
+                });
+            }, 5000);
+        });
+    </script>
+</body>
+</html> 

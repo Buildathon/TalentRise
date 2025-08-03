@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentApp - Plataforma de Talento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de diseño */
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #ec4899;
+            --turquoise: #06b6d4;
+            --gold: #fbbf24;
+            --success: #10b981;
+            --error: #ef4444;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --border-radius: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Contenedor principal */
+        .mobile-container {
+            max-width: 375px;
+            margin: 0 auto;
+            background: var(--dark-bg);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Barra de estado */
+        .status-bar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Pantallas */
+        .screen {
+            display: none;
+            min-height: calc(100vh - 120px);
+            position: relative;
+            background: var(--dark-bg);
+        }
+
+        .screen.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Pantalla de Bienvenida */
+        .welcome-screen {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--turquoise) 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 30px 40px;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .welcome-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.3"/><circle cx="80" cy="40" r="0.5" fill="white" opacity="0.5"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-screen h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--gold), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-screen p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .welcome-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Botones */
+        .btn {
+            padding: 18px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--gold), #f59e0b);
+            color: #0a0a0a;
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-register {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            width: 100%;
+            margin-top: 30px;
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Formularios */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid #333;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        .login-link a {
+            color: var(--turquoise);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Cabecera de pantalla */
+        .screen-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .screen-header h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        /* Contenido principal */
+        .content {
+            padding: 20px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        /* Tarjetas */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Navegación */
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card-bg);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            width: 100%;
+            max-width: 375px;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            flex: 1;
+            padding: 15px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            font-size: 12px;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .nav-item i {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        /* Perfil de talento */
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px 20px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--gold), var(--turquoise));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            border: 4px solid white;
+        }
+
+        .profile-info h3 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .profile-info p {
+            opacity: 0.9;
+            font-size: 1em;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        /* Bot de ayuda */
+        .help-bot {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.5);
+            transition: var(--transition);
+            z-index: 9999;
+            animation: botPulse 2s infinite;
+        }
+
+        @keyframes botPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .help-bot:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.7);
+        }
+
+        .bot-chat {
+            position: fixed;
+            bottom: 150px;
+            right: 20px;
+            width: 320px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .bot-header {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .bot-header .close-bot {
+            cursor: pointer;
+            font-size: 1.2em;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .bot-header .close-bot:hover {
+            opacity: 1;
+        }
+
+        .bot-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .bot-messages {
+            padding: 15px;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .bot-message {
+            background: var(--dark-bg);
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .bot-input {
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .bot-input input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            font-size: 0.9em;
+        }
+
+        .bot-input button {
+            padding: 8px 15px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        /* Notificaciones */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            z-index: 1000;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: slideDown 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification.error {
+            background: var(--error);
+        }
+
+        /* Animaciones */
+        @keyframes slideDown {
+            from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(0); opacity: 1; }
+            to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes galleryPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Componentes específicos */
+        .ranking-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .ranking-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .ranking-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        .ranking-info {
+            flex: 1;
+        }
+
+        .ranking-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .ranking-stats {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .ranking-position {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        /* Botón de retroceso */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Botones de acción */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .action-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .sell-btn {
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            color: white;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .btn-text {
+            font-size: 12px;
+        }
+
+        /* Galería */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--card-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 2em;
+        }
+
+        .gallery-preview {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            pointer-events: none;
+        }
+
+        .gallery-preview-text {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-preview-icon {
+            font-size: 3em;
+            position: relative;
+            z-index: 1;
+            animation: galleryPulse 2s infinite;
+        }
+
+        /* Video llamada */
+        .video-call-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .top-fan-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .fan-avatar {
+            position: relative;
+            margin-right: 15px;
+        }
+
+        .fan-avatar img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+        }
+
+        .fan-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ffd700;
+            color: #333;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 2px solid white;
+        }
+
+        .fan-details {
+            flex: 1;
+        }
+
+        .fan-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .fan-status {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .fan-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .video-call-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .call-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .call-btn.primary {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .call-btn.primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .call-btn.secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .call-btn.secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Publicaciones */
+        .post {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+        }
+
+        .post-profile-pic {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .post-user-info {
+            flex: 1;
+        }
+
+        .post-username {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .post-image {
+            width: 100%;
+            margin: 5px 0;
+            border-radius: 8px;
+        }
+
+        .post-actions {
+            display: flex;
+            padding: 8px 15px;
+        }
+
+        .post-action {
+            margin-right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .post-action:hover {
+            color: var(--primary);
+        }
+
+        .post-action.save {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .post-likes {
+            padding: 0 15px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .post-caption {
+            padding: 0 15px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        .post-caption .username {
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .post-comments {
+            padding: 5px 15px 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .post-add-comment {
+            display: flex;
+            padding: 10px 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comment-input {
+            flex: 1;
+            border: none;
+            padding: 8px;
+            font-size: 14px;
+            background: transparent;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .comment-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .post-button {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 14px;
+            padding: 5px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .post-button:hover {
+            opacity: 1;
+        }
+
+        /* Buscador */
+        .search-container {
+            padding: 15px;
+            background: var(--card-bg);
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--dark-bg);
+            border-radius: 25px;
+            padding: 10px 15px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-btn {
+            background: var(--primary);
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .search-btn:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        /* Estilos para gráficos */
+        .chart-container {
+            background: var(--dark-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .chart {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .chart-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .chart-bar {
+            flex: 1;
+            background: var(--primary);
+            margin: 0 2px;
+            border-radius: 3px 3px 0 0;
+            position: relative;
+        }
+        
+        .chart-bar:nth-child(2n) {
+            background: var(--secondary);
+            height: 65%;
+        }
+        
+        .chart-bar:nth-child(3n) {
+            background: var(--turquoise);
+            height: 50%;
+        }
+        
+        .chart-bar:nth-child(4n) {
+            background: var(--gold);
+            height: 75%;
+        }
+        
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+        
+        /* Estadísticas */
+        .chart-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .chart-stat {
+            text-align: center;
+        }
+        
+        .stat-label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+        
+        .stat-value.positive {
+            color: #00d2d3;
+        }
+        
+        .stat-value.negative {
+            color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Barra de estado -->
+        <div class="status-bar">
+            <span>9:41</span>
+            <span>📶 📶 📶 📶</span>
+        </div>
+
+        <!-- Pantalla de Bienvenida -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-screen">
+                <div class="welcome-content">
+                    <h1>🌟 TalentApp</h1>
+                    <p>Descubre y apoya a los mejores talentos del mundo. Conecta, invierte y crece junto a ellos.</p>
+                    <div class="welcome-buttons">
+                        <a href="#" class="btn btn-primary" onclick="showScreen('register-screen')">Comenzar</a>
+                        <a href="#" class="btn btn-secondary" onclick="showScreen('login-screen')">Ya tengo cuenta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Registro -->
+        <div id="register-screen" class="screen">
+            <div class="content">
+                <div class="register-header">
+                    <h2>Crear Cuenta</h2>
+                    <p>Únete a la comunidad de talentos</p>
+                </div>
+
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="fullname">Nombre Completo</label>
+                        <input type="text" id="fullname" placeholder="Tu nombre completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" placeholder="Mínimo 8 caracteres" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirmar Contraseña</label>
+                        <input type="password" id="confirm-password" placeholder="Repite tu contraseña" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-register">Crear Cuenta</button>
+                </form>
+
+                <div class="login-link">
+                    ¿Ya tienes cuenta? <a href="#" onclick="showScreen('login-screen')">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Login -->
+        <div id="login-screen" class="screen">
+            <div class="content">
+                <div class="register-header">
+                    <h2>Iniciar Sesión</h2>
+                    <p>Bienvenido de vuelta</p>
+                </div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Correo Electrónico</label>
+                        <input type="email" id="login-email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Contraseña</label>
+                        <input type="password" id="login-password" placeholder="Tu contraseña" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-register">Iniciar Sesión</button>
+                </form>
+
+                <div class="login-link">
+                    ¿No tienes cuenta? <a href="#" onclick="showScreen('register-screen')">Crear Cuenta</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feed principal -->
+        <div id="feed-screen" class="screen">
+            <div class="screen-header">
+                <h2>TalentRise</h2>
+                <span>⚙️</span>
+            </div>
+
+            <div class="content">
+                <!-- Buscador -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Buscar personas de interés..." onkeyup="searchPeople(this.value)">
+                        <button class="search-btn" onclick="performSearch()">🔍</button>
+                    </div>
+                    <div id="search-results" class="search-results"></div>
+                </div>
+
+                <!-- Publicaciones -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="post-profile-pic">
+                        <div class="post-user-info">
+                            <div class="post-username">maria_garcia</div>
+                            <div class="post-time">Hace 2 horas</div>
+                        </div>
+                        <div class="post-more">⋯</div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="post-image">
+                    <div class="post-actions">
+                        <div class="post-action">♡</div>
+                        <div class="post-action">🗨</div>
+                        <div class="post-action">↷</div>
+                        <div class="post-action save">♡</div>
+                    </div>
+                    <div class="post-likes">1,245 me gustas</div>
+                    <div class="post-caption">
+                        <span class="username">maria_garcia</span> Ensayo para mi próxima presentación en el Teatro Nacional 🩰
+                    </div>
+                    <div class="post-comments">Ver los 56 comentarios</div>
+                    <div class="post-add-comment">
+                        <input type="text" placeholder="Añade un comentario..." class="comment-input">
+                        <div class="post-button">Publicar</div>
+                    </div>
+                </div>
+
+                <!-- Publicación 2 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="post-profile-pic">
+                        <div class="post-user-info">
+                            <div class="post-username">carlos_lopez_art</div>
+                            <div class="post-time">Hace 5 horas</div>
+                        </div>
+                        <div class="post-more">⋯</div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="post-image">
+                    <div class="post-actions">
+                        <div class="post-action">♡</div>
+                        <div class="post-action">🗨</div>
+                        <div class="post-action">↷</div>
+                        <div class="post-action save">♡</div>
+                    </div>
+                    <div class="post-likes">987 me gustas</div>
+                    <div class="post-caption">
+                        <span class="username">carlos_lopez_art</span> Proceso creativo de mi última obra "Sueños de Color"
+                    </div>
+                    <div class="post-comments">Ver los 32 comentarios</div>
+                    <div class="post-add-comment">
+                        <input type="text" placeholder="Añade un comentario..." class="comment-input">
+                        <div class="post-button">Publicar</div>
+                    </div>
+                </div>
+
+                <!-- Publicación 3 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="post-profile-pic">
+                        <div class="post-user-info">
+                            <div class="post-username">ana_music</div>
+                            <div class="post-time">Hace 1 día</div>
+                        </div>
+                        <div class="post-more">⋯</div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="post-image">
+                    <div class="post-actions">
+                        <div class="post-action">♡</div>
+                        <div class="post-action">🗨</div>
+                        <div class="post-action">↷</div>
+                        <div class="post-action save">♡</div>
+                    </div>
+                    <div class="post-likes">2,156 me gustas</div>
+                    <div class="post-caption">
+                        <span class="username">ana_music</span> Nuevo single "Luz Interior" disponible en todas las plataformas 🎵✨
+                    </div>
+                    <div class="post-comments">Ver los 89 comentarios</div>
+                    <div class="post-add-comment">
+                        <input type="text" placeholder="Añade un comentario..." class="comment-input">
+                        <div class="post-button">Publicar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perfil del Talento -->
+        <div id="talent-profile" class="screen">
+            <div class="profile-header">
+                <div class="profile-avatar">🎤</div>
+                <div class="profile-info">
+                    <h3>@talent_music</h3>
+                    <p>Cantante y compositor</p>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">15.2k</div>
+                        <div class="stat-label">Seguidores</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$8.5k</div>
+                        <div class="stat-label">Ganado</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24</div>
+                        <div class="stat-label">Videos</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="card">
+                    <div style="padding: 25px; text-align: center;">
+                        <h3>💖 Minas de Heart</h3>
+                        <div style="font-size: 2.5em; font-weight: 700; color: var(--gold); margin: 10px 0;">2,847</div>
+                        <p>Hearts recolectados este mes</p>
+                        <div style="background: linear-gradient(45deg, var(--gold), var(--turquoise)); color: var(--dark-bg); padding: 10px 20px; border-radius: 25px; font-weight: 600; display: inline-block; margin-top: 15px;">🏆 Fan Badge de Oro</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="padding: 20px;">
+                        <h3>💰 Conectar Wallet</h3>
+                        <div class="wallet-options">
+                            <div class="wallet-option" onclick="connectWallet('metamask')">
+                                <div class="wallet-icon">🦊</div>
+                                <div class="wallet-info">
+                                    <div class="wallet-name">MetaMask</div>
+                                    <div class="wallet-desc">Billetera más popular</div>
+                                </div>
+                            </div>
+                            <div class="wallet-option" onclick="connectWallet('walletconnect')">
+                                <div class="wallet-icon">🔗</div>
+                                <div class="wallet-info">
+                                    <div class="wallet-name">WalletConnect</div>
+                                    <div class="wallet-desc">Conecta múltiples wallets</div>
+                                </div>
+                            </div>
+                            <div class="wallet-option" onclick="connectWallet('coinbase')">
+                                <div class="wallet-icon">🪙</div>
+                                <div class="wallet-info">
+                                    <div class="wallet-name">Coinbase Wallet</div>
+                                    <div class="wallet-desc">Billetera de Coinbase</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Ranking -->
+        <div id="ranking-screen" class="screen">
+            <div class="screen-header">
+                <h2>🏆 Ranking</h2>
+                <p>Personas más populares</p>
+            </div>
+
+            <div class="content">
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Buscar personas..." oninput="filterRanking(this.value)">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                </div>
+
+                <div class="ranking-list">
+                    <div class="ranking-item" onclick="showPersonDetail('bad-bunny')">
+                        <div class="ranking-position">1</div>
+                        <div class="ranking-avatar">👤</div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Bad Bunny</div>
+                            <div class="ranking-stats">45.2M seguidores • 1.2K posts</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ranking-item" onclick="showPersonDetail('shakira')">
+                        <div class="ranking-position">2</div>
+                        <div class="ranking-avatar">👤</div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Shakira</div>
+                            <div class="ranking-stats">38.7M seguidores • 890 posts</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ranking-item" onclick="showPersonDetail('taylor-swift')">
+                        <div class="ranking-position">3</div>
+                        <div class="ranking-avatar">👤</div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Taylor Swift</div>
+                            <div class="ranking-stats">35.1M seguidores • 756 posts</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ranking-item" onclick="showPersonDetail('beyonce')">
+                        <div class="ranking-position">4</div>
+                        <div class="ranking-avatar">👤</div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Beyoncé</div>
+                            <div class="ranking-stats">32.8M seguidores • 543 posts</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ranking-item" onclick="showPersonDetail('drake')">
+                        <div class="ranking-position">5</div>
+                        <div class="ranking-avatar">👤</div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Drake</div>
+                            <div class="ranking-stats">28.9M seguidores • 432 posts</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ranking-item" onclick="showPersonDetail('messi')">
+                        <div class="ranking-position">6</div>
+                        <div class="ranking-avatar">👤</div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Lionel Messi</div>
+                            <div class="ranking-stats">52.1M seguidores • 1.8K posts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Detalle de Persona -->
+        <div id="person-detail-screen" class="screen">
+            <div class="profile-header">
+                <button onclick="showScreen('ranking-screen')" class="back-button">←</button>
+                <div class="profile-avatar">👩‍🎨</div>
+                <div class="profile-info">
+                    <h3>María García</h3>
+                    <p>@mariagarcia</p>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">15.2K</div>
+                        <div class="stat-label">Seguidores</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">234</div>
+                        <div class="stat-label">Posts</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1.2K</div>
+                        <div class="stat-label">Siguiendo</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="card">
+                    <div style="padding: 20px;">
+                        <h3>📝 Biografía</h3>
+                        <p style="margin-top: 10px; color: var(--text-secondary); line-height: 1.6;">Artista digital apasionada por el diseño y la creatividad. Comparto mi proceso creativo y mis mejores trabajos con la comunidad. ¡Siempre aprendiendo y creciendo!</p>
+                    </div>
+                </div>
+
+                <div class="card" onclick="showGallery()">
+                    <div class="gallery-preview">
+                        <div class="gallery-preview-text">Haz clic para ver fotos, videos y contenido exclusivo</div>
+                        <div class="gallery-preview-icon">📸</div>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="action-buttons">
+                    <button class="action-btn buy-btn" onclick="buyDonation()">
+                        <span class="btn-icon">💖</span>
+                        <span class="btn-text">Comprar Donación</span>
+                    </button>
+                    <button class="action-btn sell-btn" onclick="sellDonation()">
+                        <span class="btn-icon">💰</span>
+                        <span class="btn-text">Vender Donación</span>
+                    </button>
+                </div>
+
+                <!-- Gráfico de Tokens -->
+                <div class="card">
+                    <div style="padding: 20px;">
+                        <h3>📊 Gráfico de Tokens</h3>
+                        <div class="chart-container">
+                            <div class="chart">
+                                <div class="chart-line">
+                                    <div class="chart-bar" style="height: 40%;"></div>
+                                    <div class="chart-bar" style="height: 65%;"></div>
+                                    <div class="chart-bar" style="height: 50%;"></div>
+                                    <div class="chart-bar" style="height: 75%;"></div>
+                                    <div class="chart-bar" style="height: 60%;"></div>
+                                    <div class="chart-bar" style="height: 85%;"></div>
+                                    <div class="chart-bar" style="height: 70%;"></div>
+                                </div>
+                                <div class="chart-labels">
+                                    <span>Lun</span>
+                                    <span>Mar</span>
+                                    <span>Mié</span>
+                                    <span>Jue</span>
+                                    <span>Vie</span>
+                                    <span>Sáb</span>
+                                    <span>Dom</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-stats">
+                            <div class="chart-stat">
+                                <span class="stat-label">Precio Actual</span>
+                                <span class="stat-value">$0.85</span>
+                            </div>
+                            <div class="chart-stat">
+                                <span class="stat-label">Cambio 24h</span>
+                                <span class="stat-value positive">+12.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galería Completa -->
+        <div id="gallery-screen" class="screen">
+            <div class="screen-header">
+                <h2>📸 Galería</h2>
+                <span onclick="showScreen('person-detail-screen')" style="cursor: pointer;">←</span>
+            </div>
+
+            <div class="content">
+                <div class="card">
+                    <div style="padding: 20px;">
+                        <h3>📷 Fotos</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">📷</div>
+                            <div class="gallery-item">🎨</div>
+                            <div class="gallery-item">🖼️</div>
+                            <div class="gallery-item">🖌️</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="padding: 20px;">
+                        <h3>💬 Chat con Fans</h3>
+                        <div class="fan-chat">
+                            <div class="chat-message fan">
+                                <div class="message-avatar">👤</div>
+                                <div class="message-content">
+                                    <div class="message-text">¡Hola! Me encanta tu música 🎵</div>
+                                    <div class="message-time">Hace 2 horas</div>
+                                </div>
+                            </div>
+                            <div class="chat-message artist">
+                                <div class="message-content">
+                                    <div class="message-text">¡Gracias! Me alegra que te guste 😊</div>
+                                    <div class="message-time">Hace 1 hora</div>
+                                </div>
+                                <div class="message-avatar">🎤</div>
+                            </div>
+                            <div class="chat-message fan">
+                                <div class="message-avatar">👤</div>
+                                <div class="message-content">
+                                    <div class="message-text">¿Cuándo sale tu próximo álbum? 🤔</div>
+                                    <div class="message-time">Hace 30 minutos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="padding: 20px;">
+                        <h3>📞 Video Llamada con Top Fan</h3>
+                        <div class="video-call-section">
+                            <div class="top-fan-info">
+                                <div class="fan-avatar">
+                                    <div class="fan-badge">👑</div>
+                                </div>
+                                <div class="fan-details">
+                                    <div class="fan-name">María García</div>
+                                    <div class="fan-status">Top Donador • 50,000 tokens</div>
+                                    <div class="fan-stats">
+                                        <span>🎵 150 donaciones</span>
+                                        <span>💎 VIP desde 2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-call-actions">
+                                <button class="call-btn primary" onclick="startVideoCall()">
+                                    <span class="btn-icon">📞</span>
+                                    <span class="btn-text">Iniciar Video Llamada</span>
+                                </button>
+                                <button class="call-btn secondary" onclick="scheduleVideoCall()">
+                                    <span class="btn-icon">📅</span>
+                                    <span class="btn-text">Programar Llamada</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notificaciones -->
+        <div id="notifications-screen" class="screen">
+            <div class="screen-header">
+                <h2>🔔 Notificaciones</h2>
+                <span>📱</span>
+            </div>
+
+            <div class="content">
+                <div class="card">
+                    <div style="padding: 20px; border-left: 4px solid var(--primary);">
+                        <div style="color: var(--text-primary); font-weight: 600; margin-bottom: 5px;">@badbunny subió nuevo contenido</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9em;">Nuevo video: "Behind the Scenes - Un Verano Sin Ti" 🎵</div>
+                        <div style="color: var(--gold); font-size: 0.8em; margin-top: 5px;">Hace 30 minutos</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div style="padding: 20px; border-left: 4px solid var(--primary);">
+                        <div style="color: var(--text-primary); font-weight: 600; margin-bottom: 5px;">@shakira compartió práctica de baile</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9em;">"Dance Practice - Hips Don't Lie" 💃</div>
+                        <div style="color: var(--gold); font-size: 0.8em; margin-top: 5px;">Hace 2 horas</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div style="padding: 20px; border-left: 4px solid var(--primary);">
+                        <div style="color: var(--text-primary); font-weight: 600; margin-bottom: 5px;">@taylorswift publicó foto</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9em;">"Studio Session - Midnights Album" 📸</div>
+                        <div style="color: var(--gold); font-size: 0.8em; margin-top: 5px;">Hace 4 horas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ajustes -->
+        <div id="settings-screen" class="screen">
+            <div class="screen-header">
+                <h2>⚙️ Ajustes</h2>
+                <span>🔧</span>
+            </div>
+
+            <div class="content">
+                <div class="card">
+                    <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-primary);">Notificaciones</span>
+                        <span style="color: var(--primary);">Activadas</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-primary);">Modo Oscuro</span>
+                        <span style="color: var(--primary);">Activado</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-primary);">Privacidad</span>
+                        <span style="color: var(--text-secondary);">Público</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-primary);">Idioma</span>
+                        <span style="color: var(--text-secondary);">Español</span>
+                    </div>
+                </div>
+                
+                <div class="card" onclick="logout()" style="cursor: pointer;">
+                    <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--text-primary);">Cerrar Sesión</span>
+                        <span style="color: #ef4444;">Salir</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Navegación -->
+        <div class="nav-bar">
+            <a href="#" class="nav-item active" onclick="showScreen('feed-screen'); setActiveNav(this)">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('talent-profile'); setActiveNav(this)">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('ranking-screen'); setActiveNav(this)">
+                <i class="fas fa-trophy"></i>
+                <span>Ranking</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('notifications-screen'); setActiveNav(this)">
+                <i class="fas fa-bell"></i>
+                <span>Notificaciones</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('settings-screen'); setActiveNav(this)">
+                <i class="fas fa-cog"></i>
+                <span>Ajustes</span>
+            </a>
+        </div>
+
+        <!-- Bot de Ayuda -->
+        <div class="help-bot" id="help-bot" onclick="toggleBotChat()">
+            <div class="bot-icon">🤖</div>
+        </div>
+
+        <!-- Chat del Bot -->
+        <div class="bot-chat" id="bot-chat">
+            <div class="bot-header">
+                <div class="bot-avatar">🤖</div>
+                <div>Asistente Virtual</div>
+                <span class="close-bot" onclick="toggleBotChat()">✕</span>
+            </div>
+            <div class="bot-messages" id="bot-messages">
+                <div class="bot-message">
+                    ¡Hola! Soy tu asistente de TalentApp. ¿En qué puedo ayudarte?
+                </div>
+            </div>
+            <div class="bot-input">
+                <input type="text" id="bot-input" placeholder="Escribe tu mensaje...">
+                <button onclick="sendBotMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de la aplicación
+        const peopleData = {
+            'bad-bunny': {
+                name: 'Bad Bunny',
+                username: '@badbunny',
+                avatar: '👤',
+                followers: '45.2M',
+                posts: '1.2K',
+                following: '2.1K',
+                bio: 'Artista urbano puertorriqueño. Ganador de múltiples Grammy y Billboard. Revolucionando la música latina con cada lanzamiento. 🎵🇵🇷'
+            },
+            'shakira': {
+                name: 'Shakira',
+                username: '@shakira',
+                avatar: '👤',
+                followers: '38.7M',
+                posts: '890',
+                following: '1.5K',
+                bio: 'Cantante colombiana, compositora y bailarina. Conocida como la "Reina del Rock Latino". Ganadora de múltiples premios Grammy. 🎤💃'
+            },
+            'taylor-swift': {
+                name: 'Taylor Swift',
+                username: '@taylorswift',
+                avatar: '👤',
+                followers: '35.1M',
+                posts: '756',
+                following: '890',
+                bio: 'Cantante, compositora y actriz estadounidense. Una de las artistas más exitosas de todos los tiempos. Ganadora de múltiples Grammy. 🎸✨'
+            },
+            'beyonce': {
+                name: 'Beyoncé',
+                username: '@beyonce',
+                avatar: '👤',
+                followers: '32.8M',
+                posts: '543',
+                following: '1.2K',
+                bio: 'Cantante, compositora y actriz estadounidense. Conocida como "Queen B". Una de las artistas más influyentes de la música. 👑🎤'
+            },
+            'drake': {
+                name: 'Drake',
+                username: '@drake',
+                avatar: '👤',
+                followers: '28.9M',
+                posts: '432',
+                following: '1.8K',
+                bio: 'Rapero, cantante y actor canadiense. Uno de los artistas más exitosos de la música hip-hop. Ganador de múltiples premios. 🎤🔥'
+            },
+            'messi': {
+                name: 'Lionel Messi',
+                username: '@leomessi',
+                avatar: '👤',
+                followers: '52.1M',
+                posts: '1.8K',
+                following: '890',
+                bio: 'Futbolista argentino, considerado uno de los mejores de todos los tiempos. Ganador de múltiples Balones de Oro y campeón del mundo. ⚽🏆'
+            },
+            'maria-garcia': {
+                name: 'María García',
+                username: '@mariagarcia',
+                avatar: '👩‍🎨',
+                followers: '15.2K',
+                posts: '234',
+                following: '1.2K',
+                bio: 'Artista digital apasionada por el diseño y la creatividad. Comparto mi proceso creativo y mis mejores trabajos con la comunidad. ¡Siempre aprendiendo y creciendo!'
+            }
+        };
+
+        // Estado de la aplicación
+        let currentUser = null;
+        let botChatOpen = false;
+
+        // Funciones globales
+        function showScreen(screenId) {
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+            
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+            }
+        }
+
+        function setActiveNav(element) {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type === 'error' ? 'error' : ''}`;
+            notification.innerHTML = `
+                <span>${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.3s ease';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Funciones de formularios
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            // Validación
+            if (!fullname || fullname.length < 2) {
+                showNotification('El nombre debe tener al menos 2 caracteres', 'error');
+                return;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                showNotification('Ingresa un email válido', 'error');
+                return;
+            }
+            
+            if (!password || password.length < 8) {
+                showNotification('La contraseña debe tener al menos 8 caracteres', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showNotification('Las contraseñas no coinciden', 'error');
+                return;
+            }
+            
+            // Simular registro exitoso
+            currentUser = {
+                fullname: fullname,
+                email: email,
+                createdAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('userData', JSON.stringify(currentUser));
+            
+            showNotification('¡Cuenta creada exitosamente!', 'success');
+            
+            // Redirigir después de 1.5 segundos
+            setTimeout(() => {
+                showScreen('feed-screen');
+                updateUserInterface();
+            }, 1500);
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Validación básica
+            if (!email || !password) {
+                showNotification('Por favor completa todos los campos', 'error');
+                return;
+            }
+            
+            // Simular inicio de sesión exitoso
+            currentUser = {
+                fullname: 'Usuario Ejemplo',
+                email: email,
+                lastLogin: new Date().toISOString()
+            };
+            
+            localStorage.setItem('userData', JSON.stringify(currentUser));
+            
+            showNotification('¡Inicio de sesión exitoso!', 'success');
+            
+            // Redirigir después de 1.5 segundos
+            setTimeout(() => {
+                showScreen('feed-screen');
+                updateUserInterface();
+            }, 1500);
+        });
+
+        // Actualizar la interfaz con datos del usuario
+        function updateUserInterface() {
+            if (currentUser) {
+                // Actualizar perfil si está en la pantalla
+                const profileName = document.querySelector('.profile-info h3');
+                if (profileName) {
+                    profileName.textContent = currentUser.fullname;
+                }
+            }
+        }
+
+        // Cargar datos del usuario al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedUser = localStorage.getItem('userData');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showScreen('feed-screen');
+                updateUserInterface();
+            }
+        });
+
+        // Funciones de búsqueda
+        function searchPeople(query) {
+            const searchResults = document.getElementById('search-results');
+            if (!searchResults) return;
+            
+            searchResults.innerHTML = '';
+            searchResults.style.display = 'none';
+            
+            if (!query || query.length < 2) return;
+            
+            const results = Object.entries(peopleData)
+                .filter(([id, person]) => 
+                    person.name.toLowerCase().includes(query.toLowerCase()) || 
+                    person.username.toLowerCase().includes(query.toLowerCase())
+                );
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item">No se encontraron resultados</div>';
+                searchResults.style.display = 'block';
+                return;
+            }
+            
+            results.forEach(([id, person]) => {
+                const item = document.createElement('div');
+                item.className = 'search-result-item';
+                item.innerHTML = `
+                    <div class="ranking-avatar">${person.avatar}</div>
+                    <div class="ranking-info">
+                        <div class="ranking-name">${person.name}</div>
+                        <div class="ranking-stats">${person.followers} seguidores</div>
+                    </div>
+                `;
+                item.onclick = () => showPersonDetail(id);
+                searchResults.appendChild(item);
+            });
+            
+            searchResults.style.display = 'block';
+        }
+
+        function performSearch() {
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchPeople(searchInput.value);
+            }
+        }
+
+        // Funciones de ranking
+        function filterRanking(query) {
+            const rankingItems = document.querySelectorAll('.ranking-item');
+            const queryLower = query.toLowerCase();
+            
+            if (!query) {
+                rankingItems.forEach(item => item.style.display = 'flex');
+                return;
+            }
+            
+            rankingItems.forEach(item => {
+                const name = item.querySelector('.ranking-name').textContent.toLowerCase();
+                if (name.includes(queryLower)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Funciones de detalle de persona
+        function showPersonDetail(personId) {
+            const person = peopleData[personId];
+            if (!person) return;
+            
+            // Actualizar la pantalla de detalle
+            const avatar = document.querySelector('#person-detail-screen .profile-avatar');
+            const name = document.querySelector('#person-detail-screen .profile-info h3');
+            const username = document.querySelector('#person-detail-screen .profile-info p');
+            const followers = document.querySelectorAll('#person-detail-screen .stat-number')[0];
+            const posts = document.querySelectorAll('#person-detail-screen .stat-number')[1];
+            const following = document.querySelectorAll('#person-detail-screen .stat-number')[2];
+            const bio = document.querySelector('#person-detail-screen .person-bio');
+            
+            if (avatar) avatar.textContent = person.avatar;
+            if (name) name.textContent = person.name;
+            if (username) username.textContent = person.username;
+            if (followers) followers.textContent = person.followers;
+            if (posts) posts.textContent = person.posts;
+            if (following) following.textContent = person.following;
+            if (bio) bio.textContent = person.bio;
+            
+            showScreen('person-detail-screen');
+        }
+
+        // Funciones de galería
+        function showGallery() {
+            showScreen('gallery-screen');
+        }
+
+        // Funciones de donaciones
+        function buyDonation() {
+            const amount = prompt('¿Cuánto quieres donar? (en USD)');
+            if (amount && !isNaN(amount)) {
+                showNotification(`¡Donación de $${amount} realizada exitosamente! 🎉\n\nHas comprado ${Math.floor(amount * 1.2)} tokens de esta persona.`);
+            }
+        }
+
+        function sellDonation() {
+            const tokens = prompt('¿Cuántos tokens quieres vender?');
+            if (tokens && !isNaN(tokens)) {
+                const value = tokens * 0.85;
+                showNotification(`¡Venta de ${tokens} tokens realizada! 💰\n\nHas recibido $${value.toFixed(2)} por tus tokens.`);
+            }
+        }
+
+        // Funciones de video llamada
+        function startVideoCall() {
+            showNotification('🎥 Iniciando video llamada con tu Top Fan...\n\n📞 Conectando...\n⏱️ Duración estimada: 30 minutos\n💎 Costo: 5,000 tokens\n\n¡Disfruta tu llamada exclusiva!');
+        }
+
+        function scheduleVideoCall() {
+            const date = prompt('📅 ¿Cuándo quieres programar la video llamada?\n\nIngresa la fecha (DD/MM/YYYY):');
+            if (date) {
+                const time = prompt('⏰ ¿A qué hora?\n\nIngresa la hora (HH:MM):');
+                if (time) {
+                    showNotification(`✅ Video llamada programada exitosamente!\n\n📅 Fecha: ${date}\n⏰ Hora: ${time}\n💎 Costo: 5,000 tokens\n\nTe enviaremos una notificación 15 minutos antes.`);
+                }
+            }
+        }
+
+        // Funciones del bot
+        function toggleBotChat() {
+            const botChat = document.getElementById('bot-chat');
+            botChatOpen = !botChatOpen;
+            botChat.style.display = botChatOpen ? 'block' : 'none';
+            
+            if (botChatOpen) {
+                addBotMessage('¿En qué puedo ayudarte? Puedes preguntarme sobre:\n• Cómo usar la app\n• Conectar tu wallet\n• Buscar personas\n• Configurar notificaciones');
+            }
+        }
+
+        function addBotMessage(message) {
+            const botMessages = document.getElementById('bot-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'bot-message';
+            messageDiv.textContent = message;
+            botMessages.appendChild(messageDiv);
+            botMessages.scrollTop = botMessages.scrollHeight;
+        }
+
+        function sendBotMessage() {
+            const botInput = document.getElementById('bot-input');
+            const message = botInput.value.trim();
+            
+            if (!message) return;
+            
+            // Agregar mensaje del usuario
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'bot-message';
+            userMessageDiv.style.background = 'linear-gradient(45deg, var(--primary), var(--secondary))';
+            userMessageDiv.style.marginLeft = 'auto';
+            userMessageDiv.style.marginRight = '0';
+            userMessageDiv.style.maxWidth = '80%';
+            userMessageDiv.textContent = message;
+            
+            const botMessages = document.getElementById('bot-messages');
+            botMessages.appendChild(userMessageDiv);
+            
+            // Limpiar input
+            botInput.value = '';
+            
+            // Simular respuesta del bot
+            setTimeout(() => {
+                const responses = [
+                    '¡Gracias por tu mensaje! Estoy aquí para ayudarte.',
+                    'Entiendo tu consulta, déjame buscar esa información.',
+                    '¡Excelente pregunta! Te puedo ayudar con eso.',
+                    'Voy a investigar sobre lo que me preguntas.',
+                    'Puedes consultar la sección de ayuda para más información.'
+                ];
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                addBotMessage(randomResponse);
+            }, 1000);
+            
+            botMessages.scrollTop = botMessages.scrollHeight;
+        }
+
+        // Funciones de wallet
+        function connectWallet(walletType) {
+            const walletNames = {
+                'metamask': 'MetaMask',
+                'walletconnect': 'WalletConnect',
+                'coinbase': 'Coinbase Wallet'
+            };
+            
+            showNotification(`Conectando a ${walletNames[walletType]}...`);
+            
+            setTimeout(() => {
+                showNotification(`¡${walletNames[walletType]} conectado exitosamente!`);
+            }, 2000);
+        }
+
+        // Función de logout
+        function logout() {
+            localStorage.removeItem('userData');
+            currentUser = null;
+            showScreen('welcome-screen');
+            showNotification('Sesión cerrada exitosamente');
+        }
+    </script>
+</body>
+</html>

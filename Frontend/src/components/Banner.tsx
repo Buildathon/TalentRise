@@ -1,36 +1,4 @@
-import { useState, useEffect } from "react";
-import bannerData from "../data/banner.json";
-
-const SocialLink = ({
-  href,
-  iconClass,
-  ariaLabel,
-}: {
-  href: string;
-  iconClass: string;
-  ariaLabel: string;
-}) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-white hover:text-yellow-300 transition-transform duration-300 hover:scale-110"
-    aria-label={ariaLabel}
-  >
-    <i className={iconClass} />
-  </a>
-);
-
 const Banner = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % bannerData.banner.images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       className="relative flex items-center justify-center bg-gradient-to-br from-[#ff6ec4] via-[#7873f5] to-[#5f4efc] px-4 py-16 min-h-[100vh] transition-all duration-1000"
@@ -43,7 +11,9 @@ const Banner = () => {
           <div className="text-yellow-300 text-5xl mb-2">
             <i className="bx bxs-star" />
           </div>
-          <h1 className="text-4xl font-extrabold text-yellow-300 tracking-tight mb-4">TalentApp</h1>
+          <h1 className="text-4xl font-extrabold text-yellow-300 tracking-tight mb-4">
+            TalentApp
+          </h1>
           <p className="text-white/90 text-lg leading-relaxed">
             Descubre y apoya a los mejores talentos del mundo. Conecta, invierte y crece junto a ellos.
           </p>
@@ -63,16 +33,6 @@ const Banner = () => {
             Ya tengo cuenta
           </a>
         </div>
-
-        {/* <div className="mt-8 flex justify-center space-x-6">
-          <SocialLink
-            href="https://www.facebook.com/nucleolinuxuagrm"
-            iconClass="bx bxl-facebook text-3xl"
-            ariaLabel="Facebook"
-          />
-          <SocialLink href="#" iconClass="bx bxl-twitter text-3xl" ariaLabel="Twitter" />
-          <SocialLink href="#" iconClass="bx bxl-instagram text-3xl" ariaLabel="Instagram" />
-        </div> */}
       </div>
     </section>
   );

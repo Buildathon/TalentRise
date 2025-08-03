@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 type Talento = {
   id: number;
@@ -6,130 +6,174 @@ type Talento = {
   username: string;
   fotografia: string;
   sobre_ti: string;
-  tiempo_publicacion: string; // Ej: "Hace 5 horas"
+  seguidores: number;
+  tokensRecaudados: number;
+  hearts: number;
+  recaudado: number;
+  crecimientoPorc: number;
+  tiempo_publicacion: string;
   me_gustas: number;
   comentarios: number;
   post_texto: string;
-  post_foto?: string; // foto del post (opcional)
+  post_foto?: string;
 };
 
 const talentosData: Talento[] = [
   {
     id: 1,
-    nombre_completo: "Carlos López",
-    username: "carlos_lopez_art",
+    nombre_completo: "Michael Dance",
+    username: "dance_mike",
     fotografia: "https://randomuser.me/api/portraits/men/32.jpg",
-    sobre_ti: "Artista visual, amante del color y la expresión.",
-    tiempo_publicacion: "Hace 5 horas",
-    me_gustas: 987,
-    comentarios: 32,
-    post_texto: 'Proceso creativo de mi última obra "Sueños de Color"',
+    sobre_ti: "Bailarín",
+    seguidores: 28400,
+    tokensRecaudados: 1200,
+    hearts: 2800,
+    recaudado: 1150,
+    crecimientoPorc: 38,
+    tiempo_publicacion: "Hace 2 horas",
+    me_gustas: 2800,
+    comentarios: 142,
+    post_texto: "Coreografía para el nuevo tema de Bad Bunny 💃🕺 ¿Qué opinan?",
     post_foto:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
   },
-  {
-    id: 2,
-    nombre_completo: "Ana María Torres",
-    username: "ana_m_torres",
-    fotografia: "https://randomuser.me/api/portraits/women/45.jpg",
-    sobre_ti: "Pintora y muralista",
-    tiempo_publicacion: "Hace 3 horas",
-    me_gustas: 654,
-    comentarios: 20,
-    post_texto: "Explorando nuevas técnicas digitales para complementar mi arte tradicional.",
-    post_foto:
-      "https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=600&q=80",
-  },
-  // más perfiles...
 ];
 
-const RedSocial = () => {
-  const [search, setSearch] = useState("");
+const formatNumber = (num: number) => {
+  return num >= 1000 ? (num / 1000).toFixed(1) + "K" : num.toString();
+};
 
-  // Filtrar talentos por búsqueda
-  const filteredTalentos = talentosData.filter(
-    (talento) =>
-      talento.nombre_completo.toLowerCase().includes(search.toLowerCase()) ||
-      talento.username.toLowerCase().includes(search.toLowerCase()) ||
-      talento.post_texto.toLowerCase().includes(search.toLowerCase())
-  );
+const DevList = () => {
+  const [comentarios, setComentarios] = useState<Record<number, string>>({});
+
+  const handleComentarioChange = (id: number, value: string) => {
+    setComentarios((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const enviarComentario = (id: number) => {
+    alert(`Comentario enviado: ${comentarios[id] || ""}`);
+    setComentarios((prev) => ({ ...prev, [id]: "" }));
+  };
 
   return (
-    <div className="max-w-3xl mx-auto p-4 bg-[#0A0A0A] min-h-screen text-white">
-      <input
-        type="text"
-        placeholder="Buscar talento, username o contenido..."
-        className="w-full p-3 rounded-md mb-6 text-black"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <div className="bg-black min-h-screen overflow-y-scroll snap-y snap-mandatory">
+      {talentosData.map((talento) => (
+        <article
+          key={talento.id}
+          className="relative h-screen w-full snap-start flex flex-col justify-end"
+          style={{
+            backgroundImage: `url(${talento.post_foto})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-      <div className="space-y-6">
-        {filteredTalentos.length === 0 && (
-          <p className="text-center text-gray-400">No se encontraron resultados.</p>
-        )}
-
-        {filteredTalentos.map((talento) => (
-          <article
-            key={talento.id}
-            className="bg-[#121212] rounded-lg shadow-md p-5 flex flex-col space-y-4"
-          >
-            {/* Header: Foto + Nombre + Username + Tiempo */}
-            <header className="flex items-center space-x-4">
+          {/* INFO PRINCIPAL */}
+          <div className="relative z-10 p-6 max-w-md text-white space-y-3">
+            <div className="flex items-center space-x-4">
               <img
                 src={talento.fotografia}
                 alt={talento.nombre_completo}
-                className="w-14 h-14 rounded-full object-cover border-2 border-indigo-600"
+                className="w-14 h-14 rounded-full border-2 border-indigo-600 object-cover"
               />
               <div>
-                <p className="font-semibold text-lg">{talento.nombre_completo}</p>
-                <p className="text-indigo-400 text-sm">@{talento.username}</p>
-                <p className="text-gray-400 text-xs">{talento.tiempo_publicacion}</p>
+                <h2 className="font-bold text-xl">@{talento.username}</h2>
+                <p className="text-indigo-400 text-sm">{talento.sobre_ti}</p>
+                <p className="text-xs text-gray-300">
+                  {formatNumber(talento.seguidores)} seguidores
+                </p>
               </div>
-              <button className="ml-auto text-gray-400 hover:text-white">⋯</button>
-            </header>
-
-            {/* Contenido del post */}
-            <p className="text-white">{talento.post_texto}</p>
-
-            {/* Imagen del post, si existe */}
-            {talento.post_foto && (
-              <img
-                src={talento.post_foto}
-                alt={`Post de ${talento.username}`}
-                className="rounded-md mt-2 max-h-80 w-full object-cover"
-              />
-            )}
-
-            {/* Footer: Likes y comentarios */}
-            <footer className="flex items-center space-x-6 text-gray-400 text-sm">
-              <button className="flex items-center space-x-1 hover:text-pink-500 transition">
-                <span className="text-xl">♡</span>
-                <span>{talento.me_gustas.toLocaleString()} me gustas</span>
-              </button>
-              <button className="flex items-center space-x-1 hover:text-blue-400 transition">
-                <span className="text-xl">🗨</span>
-                <span>{talento.comentarios} comentarios</span>
-              </button>
-              <button className="flex items-center space-x-1 hover:text-green-400 transition">
-                <span className="text-xl">↷</span>
-                <span>Compartir</span>
-              </button>
-            </footer>
-
-            {/* Comentario input simulado */}
-            <div className="border-t border-gray-700 pt-3">
-              <input
-                type="text"
-                placeholder="Añade un comentario..."
-                className="w-full rounded-md p-2 bg-[#1E1E1E] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
             </div>
-          </article>
-        ))}
-      </div>
+
+            {/* TEXTO POST */}
+            <p className="text-white text-base">{talento.post_texto}</p>
+
+            {/* ESTADÍSTICAS RESUMIDAS */}
+            <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
+              <div className="bg-white/10 p-3 rounded-lg text-center">
+                <p className="text-xl font-bold text-yellow-400">
+                  {formatNumber(talento.tokensRecaudados)}
+                </p>
+                <p className="text-gray-300">Tokens recaudados</p>
+              </div>
+              <div className="bg-white/10 p-3 rounded-lg text-center">
+                <p className="text-xl font-bold text-pink-400">
+                  {formatNumber(talento.hearts)}
+                </p>
+                <p className="text-gray-300">Hearts</p>
+              </div>
+              <div className="bg-white/10 p-3 rounded-lg text-center">
+                <p className="text-xl font-bold text-green-300">
+                  ${talento.recaudado.toLocaleString()}
+                </p>
+                <p className="text-gray-300">Recaudado</p>
+              </div>
+              <div className="bg-white/10 p-3 rounded-lg text-center">
+                <p
+                  className={`text-xl font-bold ${
+                    talento.crecimientoPorc >= 0
+                      ? "text-green-400"
+                      : "text-red-500"
+                  }`}
+                >
+                  {talento.crecimientoPorc >= 0 ? "+" : ""}
+                  {talento.crecimientoPorc}%
+                </p>
+                <p className="text-gray-300">Crecimiento</p>
+              </div>
+            </div>
+
+            {/* BOTONES TOKENIZAR & COMPARTIR */}
+            <div className="flex space-x-4 mt-5">
+              <button className="flex-1 bg-indigo-600 hover:bg-indigo-700 transition rounded-full py-3 font-semibold">
+                <i className="bx bx-share-alt mr-2"></i> Compartir
+              </button>
+              <button className="flex-1 bg-pink-600 hover:bg-pink-700 transition rounded-full py-3 font-semibold">
+                <i className="bx bx-diamond mr-2"></i> Tokenizar
+              </button>
+            </div>
+          </div>
+
+          {/* BOTONES FLOTANTES (ICONOS) */}
+          <div className="absolute right-4 bottom-36 flex flex-col items-center space-y-6 z-10 text-white text-2xl">
+            <button className="hover:text-pink-500 transition">
+              <i className="bx bxs-heart"></i>
+              <div className="text-sm text-center">{formatNumber(talento.me_gustas)}</div>
+            </button>
+            <button className="hover:text-blue-400 transition">
+              <i className="bx bxs-comment-dots"></i>
+              <div className="text-sm text-center">{talento.comentarios}</div>
+            </button>
+            <button className="hover:text-green-400 transition">
+              <i className="bx bx-share-alt"></i>
+              <div className="text-sm text-center">Compartir</div>
+            </button>
+          </div>
+
+          {/* COMENTARIO INPUT */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/70 z-10 flex space-x-3">
+            <input
+              type="text"
+              placeholder="Añade un comentario..."
+              className="flex-grow rounded-full p-3 bg-[#222] text-white placeholder-gray-400 focus:outline-none"
+              value={comentarios[talento.id] || ""}
+              onChange={(e) => handleComentarioChange(talento.id, e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") enviarComentario(talento.id);
+              }}
+            />
+            <button
+              onClick={() => enviarComentario(talento.id)}
+              className="bg-indigo-600 hover:bg-indigo-700 px-5 rounded-full font-semibold"
+            >
+              <i className="bx bx-send text-xl"></i>
+            </button>
+          </div>
+        </article>
+      ))}
     </div>
   );
 };
 
-export default RedSocial;
+export default DevList;
