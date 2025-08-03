@@ -1,81 +1,80 @@
+# 🏗 Scaffold-ETH 2
 
-<p align="center">
-  <img src="https://avatars.githubusercontent.com/u/155586340?s=200&v=4" width="120" alt="Buildathon Logo" />
-</p>
+<h4 align="center">
+  <a href="https://docs.scaffoldeth.io">Documentation</a> |
+  <a href="https://scaffoldeth.io">Website</a>
+</h4>
 
-<h1 align="center">Buildathon ⚒️</h1>
+🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
 
-<p align="center">
-  Innovando con Web3, React, Node y Avalanche en ETH Bolivia 2025 🌐🇧🇴
-</p>
+⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
 
----
+- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
+- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
+- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
+- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
+- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
 
-## 🧑‍💻 Equipo
-- 👨‍💻 Fernando — Frontend & Coordinación
-- 👩‍🎨 Nadia — UI/UX y diseño visual
-- 📊 Anabel — Analista de finanzas
-- 👨‍🚀 Jose Daniel — Smart Contracts, Backend & API Express
-- 👨‍💻 Luishiño — Frontend & Coordinación técnica
+![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
 
+## Requirements
 
----
+Before you begin, you need to install the following tools:
 
-## 🚀 Repositorios del Proyecto
+- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
+- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
+- [Git](https://git-scm.com/downloads)
 
-| Repositorio   | Descripción                             | Tecnologías                           |
-|---------------|-----------------------------------------|----------------------------------------|
-| [`design`](https://github.com/Buildathon/design)     | Diseño de la interfaz con Figma y prototipado | Figma, Lottie, TailwindCSS         |
-| [`frontend`](https://github.com/Buildathon/frontend) | Interfaz web moderna                   | React, TypeScript, Tailwind, Axios |
-| [`backend`](https://github.com/Buildathon/backend)   | API REST segura y conectada a MySQL   | Node.js, Express, TypeScript, JWT  |
+## Quickstart
 
-> 🔒 Todos los repositorios son privados por ahora. Estarán disponibles tras el evento.
+To get started with Scaffold-ETH 2, follow the steps below:
 
----
+1. Install dependencies if it was skipped in CLI:
 
-## 🧊 Integración con Avalanche
-
-Participamos en el hackathon **ETH Bolivia 2025** con los siguientes casos de uso:
-
-| Categoría    | Descripción |
-|--------------|-------------|
-| 🧩 **ICM**    | Identity Credential Module: validación descentralizada de identidad de talento |
-| 🔗 **ICTT**   | InterChain Talent Tracking: seguimiento de contribuciones en múltiples blockchains |
-| 💼 **eERC**   | Empresa en Red Confiable: conexión segura entre empresas y desarrolladores |
-
-🪙 Ver más sobre premios y desafíos en:  
-🔗 [ETH Bolivia 2025 — Prizes](https://taikai.network/en/ethbolivia/hackathons/EthBolivia2025/prizes)
-
----
-
-## 🧰 Tecnologías principales
-
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express.js-000000?style=flat&logo=express&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
-![Avalanche](https://img.shields.io/badge/Avalanche-E84142?style=flat&logo=avalanche&logoColor=white)
-
----
-
-## 🏗️ Estructura general del proyecto
-
-```bash
-Buildathon/
-│
-├── design/        # Recursos de diseño (Figma, mockups)
-├── frontend/      # Aplicación web en React + TS
-├── backend/       # API REST en Express
-└── .github/
-    └── profile/
-        └── README.md  # Este archivo
+```
+cd my-dapp-example
+yarn install
 ```
 
----
+2. Run a local network in the first terminal:
 
-## 📄 Licencia
+```
+yarn chain
+```
 
-Este proyecto se encuentra bajo la licencia **MIT**.  
-© 2025 Buildathon — Todos los derechos reservados.
+This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/hardhat/hardhat.config.ts`.
+
+3. On a second terminal, deploy the test contract:
+
+```
+yarn deploy
+```
+
+This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
+
+4. On a third terminal, start your NextJS app:
+
+```
+yarn start
+```
+
+Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+
+Run smart contract test with `yarn hardhat:test`
+
+- Edit your smart contracts in `packages/hardhat/contracts`
+- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
+- Edit your deployment scripts in `packages/hardhat/deploy`
+
+
+## Documentation
+
+Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+
+To know more about its features, check out our [website](https://scaffoldeth.io).
+
+## Contributing to Scaffold-ETH 2
+
+We welcome contributions to Scaffold-ETH 2!
+
+Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.

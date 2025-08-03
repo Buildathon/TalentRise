@@ -1,110 +1,241 @@
-# 🎨 Generador de Prompts Visuales
+# TalentRise Pro - Plan de Negocio Profesional
 
-Una herramienta web interactiva para crear prompts visuales profesionales basados en tus imágenes.
+## 🚀 Resumen Ejecutivo
 
-## ✨ Características
+**TalentRise Pro** es una plataforma revolucionaria que democratiza la inversión en talento del entretenimiento, conectando inversores con artistas, deportistas y creadores de contenido a través de un sistema de tokens digitales.
 
-- **Visualización de imágenes**: Muestra tus imágenes en una galería elegante
-- **Generador de prompts**: Crea prompts personalizados con múltiples opciones
-- **Estilos diversos**: Desde realista hasta fantástico
-- **Estados de ánimo**: Ajusta el tono emocional de tus prompts
-- **Iluminación**: Controla la iluminación de tus imágenes
-- **Composición**: Aplica técnicas de composición fotográfica
-- **Copia fácil**: Copia prompts con un solo clic
-
-## 🚀 Cómo usar
-
-1. **Abre el archivo**: Abre `prompt_visual.html` en tu navegador web
-2. **Visualiza tus imágenes**: Las imágenes se mostrarán automáticamente en la galería
-3. **Personaliza tu prompt**:
-   - Selecciona el **estilo visual** deseado
-   - Elige el **estado de ánimo** apropiado
-   - Ajusta la **iluminación**
-   - Define la **composición**
-   - Añade **detalles adicionales** si es necesario
-4. **Genera el prompt**: Haz clic en "🎯 Generar Prompt"
-5. **Copia y usa**: Haz clic en "📋 Copiar Prompt" para copiarlo al portapapeles
-
-## 🎯 Opciones disponibles
-
-### Estilos Visuales
-- **Realista**: Fotografía realista, alta calidad, detallado
-- **Artístico**: Arte conceptual, creativo, expresivo
-- **Minimalista**: Minimalista, limpio, espacios abiertos
-- **Vintage**: Estilo vintage, retro, nostálgico
-- **Moderno**: Contemporáneo, elegante, sofisticado
-- **Fantástico**: Fantástico, mágico, surrealista
-- **Cyberpunk**: Futurista, tecnológico, neón
-- **Acuarela**: Acuarela, suave, fluido
-- **Pintura al óleo**: Pintura al óleo, textura rica, clásico
-- **Arte digital**: Arte digital, moderno, tecnológico
-
-### Estados de Ánimo
-- **Tranquilo**: Sereno, pacífico
-- **Energético**: Dinámico, vibrante
-- **Misterioso**: Enigmático, intrigante
-- **Alegre**: Feliz, optimista
-- **Melancólico**: Nostálgico, contemplativo
-- **Dramático**: Intenso, impactante
-- **Pacífico**: Armonioso, relajante
-- **Intenso**: Poderoso, impactante
-
-### Iluminación
-- **Natural**: Suave, natural
-- **Dramática**: Contrastes fuertes
-- **Suave**: Difusa, gentil
-- **Intensa**: Directa, potente
-- **Hora dorada**: Cálida, mágica
-- **Hora azul**: Misteriosa, atmosférica
-- **Estudio**: Profesional, controlada
-- **Neón**: Vibrante, urbana
-
-### Composición
-- **Regla de tercios**: Composición clásica
-- **Simétrica**: Equilibrada, formal
-- **Asimétrica**: Dinámica, moderna
-- **Centrada**: Focalizada, directa
-- **Líneas guía**: Direccional, fluida
-- **Enmarcada**: Estructurada, definida
-- **Vista de pájaro**: Perspectiva aérea
-- **Vista de gusano**: Perspectiva baja
-
-## 📁 Archivos incluidos
-
-- `prompt_visual.html` - La herramienta principal
-- `ChatGPT Image 2 ago 2025, 01_18_54 a.m..png` - Tu imagen 1
-- `ChatGPT Image 2 ago 2025, 12_53_42 a.m..png` - Tu imagen 2
-- `ChatGPT Image 2 ago 2025, 12_58_03 a.m..png` - Tu imagen 3
-- `README.md` - Este archivo de documentación
-
-## 💡 Consejos de uso
-
-1. **Experimenta**: Prueba diferentes combinaciones de estilos y estados de ánimo
-2. **Detalles específicos**: Usa el campo de detalles adicionales para elementos específicos
-3. **Itera**: Genera múltiples versiones y elige la mejor
-4. **Personaliza**: Ajusta los prompts según tus necesidades específicas
-
-## 🎨 Ejemplo de prompt generado
-
-```
-Crea una imagen fotografía realista, alta calidad, detallado con un estado de ánimo tranquilo, sereno, pacífico, iluminación natural, suave, composición usando regla de tercios. Alta calidad, 4K, detallado, profesional.
-```
-
-## 🔧 Tecnologías utilizadas
-
-- HTML5
-- CSS3 (con gradientes y animaciones)
-- JavaScript (vanilla)
-- Diseño responsive
-- Interfaz moderna y intuitiva
-
-## 📱 Compatibilidad
-
-- ✅ Navegadores modernos (Chrome, Firefox, Safari, Edge)
-- ✅ Dispositivos móviles
-- ✅ Tablets
-- ✅ Escritorio
+### Propuesta de Valor
+- **Para Inversores**: Acceso a inversiones en talento con potencial de alto rendimiento
+- **Para Talentos**: Nueva fuente de financiamiento y conexión directa con fans
+- **Para la Plataforma**: Comisiones por transacciones y servicios premium
 
 ---
 
-¡Disfruta creando prompts visuales increíbles! 🎨✨ 
+## 📊 Modelo de Negocio
+
+### Fuentes de Ingresos
+
+#### 1. **Comisiones por Transacciones (3-5%)**
+- Comisión sobre cada compra/venta de tokens
+- Comisión sobre transacciones en el marketplace
+- Comisión sobre servicios premium
+
+#### 2. **Suscripciones Premium**
+- **Plan Básico**: Gratuito (comisiones más altas)
+- **Plan Pro**: $19.99/mes (comisiones reducidas, análisis avanzado)
+- **Plan Elite**: $49.99/mes (acceso exclusivo, eventos VIP)
+
+#### 3. **Servicios Adicionales**
+- Análisis de mercado y reportes
+- Eventos exclusivos y meet & greets
+- NFT y contenido exclusivo
+- Servicios de consultoría
+
+#### 4. **Marketplace**
+- Comisiones sobre ventas de productos
+- Servicios de logística y fulfillment
+- Publicidad para talentos
+
+---
+
+## 🎯 Mercado Objetivo
+
+### Segmentos Principales
+
+#### **Inversores Individuales**
+- **Demografía**: 25-45 años, ingresos medios-altos
+- **Intereses**: Inversiones alternativas, entretenimiento, tecnología
+- **Motivación**: Diversificación de portfolio, conexión con ídolos
+
+#### **Inversores Institucionales**
+- Fondos de inversión especializados en entretenimiento
+- Empresas de gestión de patrimonio
+- Fondos de pensiones buscando diversificación
+
+#### **Talentos**
+- Artistas musicales (emergentes y establecidos)
+- Deportistas profesionales
+- Creadores de contenido digital
+- Influencers y personalidades
+
+---
+
+## 💡 Características Técnicas Profesionales
+
+### **Arquitectura Escalable**
+- **Frontend**: React.js con TypeScript
+- **Backend**: Node.js con Express
+- **Base de Datos**: PostgreSQL + Redis
+- **Blockchain**: Ethereum/Solana para tokens
+- **Cloud**: AWS/Azure para escalabilidad
+
+### **Seguridad Empresarial**
+- Autenticación multi-factor
+- Encriptación end-to-end
+- Cumplimiento GDPR/CCPA
+- Auditorías de seguridad regulares
+- Seguros de responsabilidad civil
+
+### **Análisis de Datos**
+- Machine Learning para predicción de precios
+- Análisis de sentimiento en redes sociales
+- Métricas de engagement en tiempo real
+- Reportes personalizados para inversores
+
+---
+
+## 📈 Estrategia de Crecimiento
+
+### **Fase 1: Lanzamiento (6 meses)**
+- MVP con funcionalidades básicas
+- 50 talentos verificados
+- 1,000 usuarios registrados
+- $500K en volumen de transacciones
+
+### **Fase 2: Expansión (12 meses)**
+- 200+ talentos en la plataforma
+- 10,000 usuarios activos
+- Integración con redes sociales
+- $5M en volumen de transacciones
+
+### **Fase 3: Escalamiento (24 meses)**
+- 1,000+ talentos verificados
+- 100,000 usuarios activos
+- Expansión internacional
+- $50M en volumen de transacciones
+
+---
+
+## 🏆 Ventajas Competitivas
+
+### **Tecnología Propietaria**
+- Algoritmo de valoración de talento único
+- Sistema de predicción de tendencias
+- Plataforma de trading avanzada
+
+### **Red de Talentos**
+- Acuerdos exclusivos con artistas
+- Programa de incubación para talentos emergentes
+- Red de managers y agentes
+
+### **Experiencia de Usuario**
+- Interfaz intuitiva y gamificada
+- Educación financiera integrada
+- Comunidad de inversores activa
+
+---
+
+## 💰 Proyecciones Financieras
+
+### **Año 1**
+- Ingresos: $2.5M
+- Usuarios: 10,000
+- Talentos: 200
+- EBITDA: -$500K
+
+### **Año 3**
+- Ingresos: $25M
+- Usuarios: 100,000
+- Talentos: 1,000
+- EBITDA: $5M
+
+### **Año 5**
+- Ingresos: $100M
+- Usuarios: 500,000
+- Talentos: 5,000
+- EBITDA: $25M
+
+---
+
+## 🛡️ Gestión de Riesgos
+
+### **Riesgos Regulatorios**
+- Cumplimiento con regulaciones financieras
+- Licencias necesarias para trading de tokens
+- Protección de datos personales
+
+### **Riesgos de Mercado**
+- Volatilidad en el mercado de entretenimiento
+- Cambios en preferencias de consumo
+- Competencia de plataformas establecidas
+
+### **Riesgos Operacionales**
+- Seguridad de la plataforma
+- Gestión de liquidez
+- Escalabilidad de la tecnología
+
+---
+
+## 🚀 Roadmap de Desarrollo
+
+### **Q1 2024: MVP**
+- [x] Diseño de la interfaz
+- [x] Sistema de autenticación
+- [x] Dashboard básico
+- [ ] Integración con wallets
+
+### **Q2 2024: Funcionalidades Core**
+- [ ] Sistema de trading
+- [ ] Marketplace básico
+- [ ] Perfiles de talentos
+- [ ] Sistema de notificaciones
+
+### **Q3 2024: Características Avanzadas**
+- [ ] Análisis de datos
+- [ ] Reportes personalizados
+- [ ] Integración con redes sociales
+- [ ] Sistema de recompensas
+
+### **Q4 2024: Escalamiento**
+- [ ] Aplicación móvil nativa
+- [ ] API pública
+- [ ] Integración con exchanges
+- [ ] Programa de referidos
+
+---
+
+## 🎯 Métricas de Éxito
+
+### **Métricas de Usuario**
+- Usuarios activos mensuales (MAU)
+- Tasa de retención
+- Tiempo promedio en la aplicación
+- Conversión de usuarios gratuitos a premium
+
+### **Métricas Financieras**
+- Volumen total de transacciones
+- Ingresos por usuario (ARPU)
+- Lifetime value del cliente (LTV)
+- Costo de adquisición de cliente (CAC)
+
+### **Métricas de Talento**
+- Número de talentos verificados
+- Engagement promedio por talento
+- Valor promedio de tokens por talento
+- Tasa de crecimiento de seguidores
+
+---
+
+## 🌟 Propuesta de Valor Única
+
+**TalentRise Pro** no es solo una plataforma de inversión, es una revolución en la forma en que interactuamos con el entretenimiento:
+
+1. **Democratización**: Cualquier persona puede invertir en sus ídolos
+2. **Transparencia**: Todos los datos y transacciones son públicos
+3. **Comunidad**: Conexión directa entre fans y talentos
+4. **Innovación**: Tecnología blockchain para tokenización real
+5. **Educación**: Herramientas para aprender sobre inversiones
+
+---
+
+## 📞 Próximos Pasos
+
+1. **Desarrollo del MVP completo**
+2. **Acuerdos con talentos pioneros**
+3. **Campaña de marketing digital**
+4. **Ronda de financiamiento Serie A**
+5. **Expansión a mercados internacionales**
+
+---
+
+*TalentRise Pro - Invierte en el futuro del entretenimiento* 🚀 
