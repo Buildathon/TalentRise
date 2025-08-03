@@ -1,0 +1,2975 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentRise - Descubre y Apoya Talentos Emergentes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables de diseño elegante */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #06b6d4;
+            --secondary-dark: #0891b2;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f97316;
+            --dark-bg: #0f172a;
+            --dark-bg-light: #1e293b;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --border-radius: 20px;
+            --border-radius-sm: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2);
+            --glow-primary: 0 0 20px rgba(99, 102, 241, 0.4);
+            --glow-secondary: 0 0 20px rgba(6, 182, 212, 0.4);
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(248, 250, 252, 0.1);
+        }
+
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #130f2a 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Contenedor principal */
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: var(--dark-bg);
+        }
+
+        /* Barra de estado */
+        .status-bar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Pantallas */
+        .screen {
+            display: none;
+            min-height: calc(100vh - 120px);
+            position: relative;
+            background: transparent;
+            padding-bottom: 80px;
+        }
+
+        .screen.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Pantalla de Bienvenida */
+        .welcome-screen {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 30px 40px;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .welcome-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%238A2BE2' fill-opacity='0.1' d='M43.5,-58.5C54.1,-51.1,58.2,-33.6,61.4,-15.6C64.6,2.4,66.9,20.9,59.8,34.4C52.7,47.9,36.1,56.4,18.7,62.5C1.3,68.7,-16.9,72.5,-31.1,66.3C-45.3,60.1,-55.6,43.9,-61.2,26.9C-66.9,9.9,-67.9,-7.9,-62.5,-23.8C-57.1,-39.7,-45.3,-53.8,-31.2,-59.9C-17.1,-66,-0.5,-64.2,16.7,-61.2C33.9,-58.2,51.6,-54,62.5,-45.1C73.4,-36.2,77.5,-22.6,78.8,-8.7C80.1,5.2,78.6,19.4,72.5,31.1C66.5,42.9,55.8,52.2,43.5,59.7C31.2,67.2,17.3,72.9,1.1,71.1C-15.1,69.3,-30.3,60.1,-42.9,50.3C-55.5,40.5,-65.5,30.1,-69.9,17.1C-74.3,4.1,-73.1,-11.4,-67.6,-25.2C-62.1,-39.1,-52.3,-51.2,-40.3,-57.7C-28.3,-64.2,-14.1,-65.1,1.7,-67.9C17.5,-70.7,35,-75.3,43.5,-58.5Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-screen h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ffffff, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .welcome-screen p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* Botones Web3 */
+        .btn {
+            padding: 18px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: var(--glow-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(138, 43, 226, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-register {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            width: 100%;
+            margin-top: 30px;
+            box-shadow: var(--glow-primary);
+        }
+
+        .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Pantalla de Registro */
+        .register-screen {
+            background: var(--dark-bg);
+            padding: 40px 30px;
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .register-header h2 {
+            color: var(--text-primary);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .register-header p {
+            color: var(--text-secondary);
+            font-size: 1em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid #333;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-secondary);
+        }
+
+        .login-link a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Cabecera de pantalla */
+        .screen-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .screen-header h2 {
+            font-size: 1.7em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Contenido principal */
+        .content {
+            padding: 0;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            background: var(--dark-bg);
+        }
+
+        /* Feed de descubrimiento (estilo TikTok) */
+        .discovery-feed {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            scroll-snap-type: y mandatory;
+        }
+
+        .feed-item {
+            flex: 1 0 100%;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            scroll-snap-align: start;
+            cursor: pointer;
+        }
+
+        .feed-item:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .video-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(15, 12, 29, 0.9) 0%, transparent 50%);
+            z-index: 2;
+        }
+
+        .video-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .talent-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .talent-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid white;
+            overflow: hidden;
+        }
+
+        .talent-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .talent-details h3 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .talent-category {
+            color: var(--secondary);
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .video-description {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            line-height: 1.4;
+        }
+
+        .video-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--secondary);
+            font-family: 'Space Grotesk', sans-serif;
+            text-shadow: 0 0 10px rgba(0, 210, 211, 0.5);
+        }
+
+        .stat-item {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.1);
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        .action-bar {
+            position: absolute;
+            right: 20px;
+            bottom: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            z-index: 3;
+        }
+
+        .action-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .action-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(30, 27, 52, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 5px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .action-icon:hover {
+            transform: scale(1.1);
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .action-icon.liked {
+            background: var(--accent);
+            border-color: var(--accent);
+            animation: heartBeat 0.6s ease;
+        }
+
+        .action-text {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .token-badge {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .token-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+        }
+
+        /* Pantalla de Ranking */
+        .ranking-list {
+            padding: 20px;
+        }
+
+        .ranking-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .ranking-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .ranking-position {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-right: 15px;
+        }
+
+        .ranking-avatar {
+            margin-right: 15px;
+        }
+
+        .ranking-info {
+            flex: 1;
+        }
+
+        .ranking-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .ranking-stats {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .ranking-tokens {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .token-price {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9em;
+        }
+
+        .token-change {
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .token-change.positive {
+            color: var(--success);
+        }
+
+        .token-change.negative {
+            color: var(--error);
+        }
+
+        /* Pantalla de Notificaciones */
+        .notification-list {
+            padding: 20px;
+        }
+
+        .notification-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            border-left: 4px solid var(--primary);
+        }
+
+        .notification-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 16px;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .notification-text {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .notification-time {
+            color: var(--text-tertiary);
+            font-size: 0.8em;
+        }
+
+        /* Pantalla de Ajustes */
+        .settings-list {
+            padding: 20px;
+        }
+
+        .settings-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .settings-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .settings-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .settings-info i {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .settings-value {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .settings-item.logout {
+            border-left: 4px solid var(--error);
+        }
+
+        .settings-item.logout .settings-info i {
+            color: var(--error);
+        }
+
+        /* Pantalla de Búsqueda */
+        .search-container {
+            padding: 20px;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 45px 15px 20px;
+            border: 2px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .search-results {
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-result-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .search-result-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .search-result-info {
+            flex: 1;
+        }
+
+        .search-result-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .search-result-username {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .trending-section, .categories-section {
+            padding: 0 20px 20px;
+        }
+
+        .trending-section h3, .categories-section h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .trending-talents {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .trending-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 80px;
+        }
+
+        .trending-item:hover {
+            transform: scale(1.05);
+        }
+
+        .trending-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .trending-item span {
+            font-size: 12px;
+            color: var(--text-primary);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .category-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius-sm);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--glass-border);
+        }
+
+        .category-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .category-item i {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .category-item span {
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Pantallas de Perfil Detallado */
+        .profile-header {
+            position: relative;
+            background: var(--dark-bg);
+            overflow: hidden;
+        }
+
+        .profile-cover {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+        }
+
+        .profile-info {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: -50px auto 20px;
+            border: 4px solid var(--dark-bg);
+            overflow: hidden;
+            position: relative;
+            z-index: 5;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .profile-info p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .profile-stats .stat {
+            text-align: center;
+        }
+
+        .profile-stats .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .profile-stats .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .profile-content {
+            padding: 20px;
+            background: var(--dark-bg);
+        }
+
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .profile-section h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .profile-section p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .goals-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius-sm);
+            border-left: 3px solid var(--accent);
+        }
+
+        .goal-item i {
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .goal-item span {
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .talents-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .talent-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--glass-border);
+        }
+
+        .talent-item i {
+            color: var(--secondary);
+            font-size: 16px;
+        }
+
+        .talent-item span {
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius-sm);
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        .stat-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .stat-info .stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .stat-info .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .action-btn.secondary {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Selector de tipo de usuario */
+        .user-type-selector {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .user-type-option {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid var(--glass-border);
+            border-radius: var(--border-radius-sm);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+        }
+
+        .user-type-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .user-type-option.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .user-type-option i {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .user-type-option span {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .user-type-option p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Tarjetas de biografía coloridas */
+        .bio-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(99, 102, 241, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+            z-index: 1;
+        }
+
+        .bio-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bio-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .bio-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bio-info h4 {
+            color: var(--text-primary);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .bio-info p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .bio-text {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bio-text p {
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .bio-objective {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bio-objective h5 {
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .bio-objective p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Grid de inversiones del usuario */
+        .investments-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .investment-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .investment-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .investment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+        }
+
+        .investment-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .investment-info {
+            flex: 1;
+        }
+
+        .investment-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .investment-tokens {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .investment-value {
+            text-align: right;
+        }
+
+        .value-amount {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .value-change {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .value-change.positive {
+            color: var(--success);
+        }
+
+        .value-change.negative {
+            color: var(--error);
+        }
+
+        /* Barra de Navegación Web3 */
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            width: 100%;
+            max-width: 480px;
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-top: 1px solid var(--glass-border);
+            padding: 5px;
+        }
+
+        .nav-item {
+            flex: 1;
+            padding: 8px 5px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            font-size: 11px;
+            position: relative;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+        }
+
+        .nav-item:hover {
+            background: rgba(138, 43, 226, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .nav-item i {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 3px;
+            transition: var(--transition);
+        }
+
+        .nav-item.active i {
+            transform: translateY(-5px);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(1.1); }
+            75% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .token-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Beneficios para fans */
+        .benefits-container {
+            padding: 20px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .benefit-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius-sm);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .benefit-icon {
+            font-size: 28px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .benefit-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .benefit-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Barra de estado -->
+        <div class="status-bar glass-effect">
+            <span>TalentRise</span>
+            <div>
+                <i class="fas fa-wifi"></i>
+                <span>100%</span>
+            </div>
+        </div>
+
+        <!-- Pantalla de Bienvenida -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-screen">
+                <div class="welcome-content">
+                    <h1>🌟 TalentApp</h1>
+                    <p>Descubre y apoya a los mejores talentos del mundo. Conecta, invierte y crece junto a ellos.</p>
+                    <div class="welcome-buttons">
+                        <a href="#" class="btn btn-primary" onclick="showScreen('register-screen')">Comenzar</a>
+                        <a href="#" class="btn btn-secondary" onclick="showScreen('login-screen')">Ya tengo cuenta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Registro -->
+        <div id="register-screen" class="screen">
+            <div class="register-screen">
+                <div class="register-header">
+                    <h2>Crear Cuenta</h2>
+                    <p>Únete a la comunidad de talentos</p>
+                </div>
+
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="fullname">Nombre Completo</label>
+                        <input type="text" id="fullname" placeholder="Tu nombre completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-type">Tipo de Usuario</label>
+                        <div class="user-type-selector">
+                            <div class="user-type-option" data-type="fan">
+                                <i class="fas fa-heart"></i>
+                                <span>Fan</span>
+                                <p>Apoya y sigue a tus talentos favoritos</p>
+                            </div>
+                            <div class="user-type-option" data-type="talent">
+                                <i class="fas fa-star"></i>
+                                <span>Talento</span>
+                                <p>Comparte tu talento y crece tu audiencia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" placeholder="Mínimo 8 caracteres" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirmar Contraseña</label>
+                        <input type="password" id="confirm-password" placeholder="Repite tu contraseña" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-register">Crear Cuenta</button>
+                </form>
+
+                <div class="login-link">
+                    ¿Ya tienes cuenta? <a href="#" onclick="showScreen('login-screen')">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Login -->
+        <div id="login-screen" class="screen">
+            <div class="register-screen">
+                <div class="register-header">
+                    <h2>Iniciar Sesión</h2>
+                    <p>Bienvenido de vuelta</p>
+                </div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Correo Electrónico</label>
+                        <input type="email" id="login-email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Contraseña</label>
+                        <input type="password" id="login-password" placeholder="Tu contraseña" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-register">Iniciar Sesión</button>
+                </form>
+
+                <div class="login-link">
+                    ¿No tienes cuenta? <a href="#" onclick="showScreen('register-screen')">Crear Cuenta</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Feed de Descubrimiento -->
+        <div id="discovery-screen" class="screen">
+            <div class="screen-header glass-effect">
+                <h2><i class="fas fa-compass"></i> Descubrir</h2>
+                <div>
+                    <i class="fas fa-search" onclick="showScreen('search-screen')"></i>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="discovery-feed">
+                    <!-- Video 1 - Música -->
+                    <div class="feed-item">
+                        <div class="video-container">
+                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="video-bg" alt="Sarah Vocal">
+                            <div class="video-overlay"></div>
+                        </div>
+                        
+                        <div class="action-bar">
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="action-text">1.2K</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="action-text">86</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-share"></i>
+                                </div>
+                                <div class="action-text">Compartir</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <div class="action-text">Tokenizar</div>
+                            </div>
+                        </div>
+                        
+                        <div class="video-content">
+                            <div class="talent-info">
+                                <div class="talent-avatar">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&fit=crop" alt="Sarah Vocal">
+                                </div>
+                                <div class="talent-details">
+                                    <h3>@sarah_vocal</h3>
+                                    <div class="talent-category">Cantante • 15.8K seguidores</div>
+                                </div>
+                            </div>
+                            
+                            <div class="video-description">
+                                Mi primera composición original "Luz de Luna" 🌙🎶 Espero que les guste!
+                                <div class="token-badge">
+                                    <i class="fas fa-coins"></i> 450 Tokens recaudados
+                                </div>
+                            </div>
+                            
+                            <div class="video-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">1.2K</div>
+                                    <div class="stat-label">Hearts</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">$420</div>
+                                    <div class="stat-label">Recaudado</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">+24%</div>
+                                    <div class="stat-label">Crecimiento</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 - Danza -->
+                    <div class="feed-item">
+                        <div class="video-container">
+                            <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="video-bg" alt="Dance Mike">
+                            <div class="video-overlay"></div>
+                        </div>
+                        
+                        <div class="action-bar">
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="action-text">2.8K</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="action-text">142</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-share"></i>
+                                </div>
+                                <div class="action-text">Compartir</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <div class="action-text">Tokenizar</div>
+                            </div>
+                        </div>
+                        
+                        <div class="video-content">
+                            <div class="talent-info">
+                                <div class="talent-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&fit=crop" alt="Dance Mike">
+                                </div>
+                                <div class="talent-details">
+                                    <h3>@dance_mike</h3>
+                                    <div class="talent-category">Bailarín • 28.4K seguidores</div>
+                                </div>
+                            </div>
+                            
+                            <div class="video-description">
+                                Coreografía para el nuevo tema de Bad Bunny 💃🕺 ¿Qué opinan?
+                                <div class="token-badge">
+                                    <i class="fas fa-coins"></i> 1.2K Tokens recaudados
+                                </div>
+                            </div>
+                            
+                            <div class="video-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">2.8K</div>
+                                    <div class="stat-label">Hearts</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">$1,150</div>
+                                    <div class="stat-label">Recaudado</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">+38%</div>
+                                    <div class="stat-label">Crecimiento</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3 - Arte -->
+                    <div class="feed-item">
+                        <div class="video-container">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="video-bg" alt="Art Emilia">
+                            <div class="video-overlay"></div>
+                        </div>
+                        
+                        <div class="action-bar">
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="action-text">850</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="action-text">45</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-share"></i>
+                                </div>
+                                <div class="action-text">Compartir</div>
+                            </div>
+                            <div class="action-button">
+                                <div class="action-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <div class="action-text">Tokenizar</div>
+                            </div>
+                        </div>
+                        
+                        <div class="video-content">
+                            <div class="talent-info">
+                                <div class="talent-avatar">
+                                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&fit=crop" alt="Art Emilia">
+                                </div>
+                                <div class="talent-details">
+                                    <h3>@art_emilia</h3>
+                                    <div class="talent-category">Artista Visual • 8.7K seguidores</div>
+                                </div>
+                            </div>
+                            
+                            <div class="video-description">
+                                Proceso de creación de mi nueva obra "Sueños Digitales" 🎨✨
+                                <div class="token-badge">
+                                    <i class="fas fa-coins"></i> 320 Tokens recaudados
+                                </div>
+                            </div>
+                            
+                            <div class="video-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">850</div>
+                                    <div class="stat-label">Hearts</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">$280</div>
+                                    <div class="stat-label">Recaudado</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">+18%</div>
+                                    <div class="stat-label">Crecimiento</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Web3 -->
+        <div class="nav-bar glass-effect">
+            <a href="#" class="nav-item active" onclick="showScreen('discovery-screen'); setActiveNav(this)">
+                <i class="fas fa-compass"></i>
+                <span>Descubrir</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('ranking-screen'); setActiveNav(this)">
+                <i class="fas fa-trophy"></i>
+                <span>Ranking</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('notifications-screen'); setActiveNav(this)">
+                <i class="fas fa-bell"></i>
+                <span>Notificaciones</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('settings-screen'); setActiveNav(this)">
+                <i class="fas fa-cog"></i>
+                <span>Ajustes</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showScreen('profile-user'); setActiveNav(this)">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+        </div>
+
+        <!-- Pantalla de Búsqueda -->
+        <div id="search-screen" class="screen">
+            <div class="screen-header glass-effect">
+                <h2><i class="fas fa-search"></i> Buscar</h2>
+                <div>
+                    <i class="fas fa-times" onclick="showScreen('discovery-screen')" style="cursor: pointer;"></i>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Buscar talentos, categorías..." onkeyup="searchTalents(this.value)">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div id="search-results" class="search-results"></div>
+                </div>
+
+                <div class="trending-section">
+                    <h3>🔥 Tendencias</h3>
+                    <div class="trending-talents">
+                        <div class="trending-item" onclick="showPersonDetail('bad-bunny')">
+                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=60&h=60&fit=crop" alt="Bad Bunny">
+                            <span>Bad Bunny</span>
+                        </div>
+                        <div class="trending-item" onclick="showPersonDetail('shakira')">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=60&h=60&fit=crop" alt="Shakira">
+                            <span>Shakira</span>
+                        </div>
+                        <div class="trending-item" onclick="showPersonDetail('taylor-swift')">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop" alt="Taylor Swift">
+                            <span>Taylor Swift</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="categories-section">
+                    <h3>📂 Categorías</h3>
+                    <div class="categories-grid">
+                        <div class="category-item" onclick="searchByCategory('musica')">
+                            <i class="fas fa-music"></i>
+                            <span>Música</span>
+                        </div>
+                        <div class="category-item" onclick="searchByCategory('danza')">
+                            <i class="fas fa-shoe-prints"></i>
+                            <span>Danza</span>
+                        </div>
+                        <div class="category-item" onclick="searchByCategory('arte')">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Arte</span>
+                        </div>
+                        <div class="category-item" onclick="searchByCategory('deportes')">
+                            <i class="fas fa-futbol"></i>
+                            <span>Deportes</span>
+                        </div>
+                        <div class="category-item" onclick="searchByCategory('comedia')">
+                            <i class="fas fa-laugh"></i>
+                            <span>Comedia</span>
+                        </div>
+                        <div class="category-item" onclick="searchByCategory('tecnologia')">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Tecnología</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Ranking -->
+        <div id="ranking-screen" class="screen">
+            <div class="screen-header glass-effect">
+                <h2><i class="fas fa-trophy"></i> Ranking</h2>
+                <div>
+                    <i class="fas fa-search" onclick="showScreen('search-screen')"></i>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="ranking-list">
+                    <div class="ranking-item" onclick="showPersonDetail('bad-bunny')">
+                        <div class="ranking-position">1</div>
+                        <div class="ranking-avatar">
+                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=50&h=50&fit=crop" alt="Bad Bunny" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Bad Bunny</div>
+                            <div class="ranking-stats">45.2M seguidores • 1.2K posts</div>
+                        </div>
+                        <div class="ranking-tokens">
+                            <span class="token-price">$2.45</span>
+                            <span class="token-change positive">+12.5%</span>
+                        </div>
+                    </div>
+
+                    <div class="ranking-item" onclick="showPersonDetail('shakira')">
+                        <div class="ranking-position">2</div>
+                        <div class="ranking-avatar">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=50&h=50&fit=crop" alt="Shakira" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Shakira</div>
+                            <div class="ranking-stats">38.7M seguidores • 890 posts</div>
+                        </div>
+                        <div class="ranking-tokens">
+                            <span class="token-price">$1.89</span>
+                            <span class="token-change positive">+8.3%</span>
+                        </div>
+                    </div>
+
+                    <div class="ranking-item" onclick="showPersonDetail('taylor-swift')">
+                        <div class="ranking-position">3</div>
+                        <div class="ranking-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop" alt="Taylor Swift" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Taylor Swift</div>
+                            <div class="ranking-stats">35.1M seguidores • 756 posts</div>
+                        </div>
+                        <div class="ranking-tokens">
+                            <span class="token-price">$3.12</span>
+                            <span class="token-change positive">+15.2%</span>
+                        </div>
+                    </div>
+
+                    <div class="ranking-item" onclick="showPersonDetail('beyonce')">
+                        <div class="ranking-position">4</div>
+                        <div class="ranking-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=50&h=50&fit=crop" alt="Beyoncé" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Beyoncé</div>
+                            <div class="ranking-stats">32.8M seguidores • 543 posts</div>
+                        </div>
+                        <div class="ranking-tokens">
+                            <span class="token-price">$2.78</span>
+                            <span class="token-change positive">+9.7%</span>
+                        </div>
+                    </div>
+
+                    <div class="ranking-item" onclick="showPersonDetail('drake')">
+                        <div class="ranking-position">5</div>
+                        <div class="ranking-avatar">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=50&h=50&fit=crop" alt="Drake" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">Drake</div>
+                            <div class="ranking-stats">28.9M seguidores • 432 posts</div>
+                        </div>
+                        <div class="ranking-tokens">
+                            <span class="token-price">$1.95</span>
+                            <span class="token-change negative">-2.1%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Notificaciones -->
+        <div id="notifications-screen" class="screen">
+            <div class="screen-header glass-effect">
+                <h2><i class="fas fa-bell"></i> Notificaciones</h2>
+                <div>
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="notification-list">
+                    <div class="notification-item">
+                        <div class="notification-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="notification-content">
+                            <div class="notification-title">Reunión programada con @badbunny</div>
+                            <div class="notification-text">Video llamada mañana a las 3:00 PM - "Behind the Scenes Session" 📹</div>
+                            <div class="notification-time">Hace 30 minutos</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon"><i class="fas fa-gem"></i></div>
+                        <div class="notification-content">
+                            <div class="notification-title">Compra de tokens exitosa</div>
+                            <div class="notification-text">Has comprado 500 tokens de @shakira por $150 USD 💎</div>
+                            <div class="notification-time">Hace 2 horas</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon"><i class="fas fa-video"></i></div>
+                        <div class="notification-content">
+                            <div class="notification-title">Programa especial con @taylorswift</div>
+                            <div class="notification-text">"Midnights Album Release Party" - Domingo 8:00 PM 🎤</div>
+                            <div class="notification-time">Hace 4 horas</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon"><i class="fas fa-coins"></i></div>
+                        <div class="notification-content">
+                            <div class="notification-title">Venta de tokens completada</div>
+                            <div class="notification-text">Vendiste 200 tokens de @drake por $80 USD 📈</div>
+                            <div class="notification-time">Hace 6 horas</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon"><i class="fas fa-users"></i></div>
+                        <div class="notification-content">
+                            <div class="notification-title">Reunión grupal con @beyonce</div>
+                            <div class="notification-text">"Queen B Fan Meet" - Sábado 2:00 PM 👑</div>
+                            <div class="notification-time">Hace 8 horas</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="notification-content">
+                            <div class="notification-title">Tokens de @messi en alza</div>
+                            <div class="notification-text">Tus tokens han subido un 15% en las últimas 24h ⬆️</div>
+                            <div class="notification-time">Hace 12 horas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Ajustes -->
+        <div id="settings-screen" class="screen">
+            <div class="screen-header glass-effect">
+                <h2><i class="fas fa-cog"></i> Ajustes</h2>
+                <div>
+                    <i class="fas fa-home" onclick="showScreen('discovery-screen')" style="cursor: pointer;"></i>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <i class="fas fa-bell"></i>
+                            <span>Notificaciones</span>
+                        </div>
+                        <div class="settings-value">Activadas</div>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <i class="fas fa-moon"></i>
+                            <span>Modo Oscuro</span>
+                        </div>
+                        <div class="settings-value">Activado</div>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Privacidad</span>
+                        </div>
+                        <div class="settings-value">Público</div>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <i class="fas fa-globe"></i>
+                            <span>Idioma</span>
+                        </div>
+                        <div class="settings-value">Español</div>
+                    </div>
+
+                    <div class="settings-item" onclick="showScreen('profile-user')">
+                        <div class="settings-info">
+                            <i class="fas fa-user"></i>
+                            <span>Mi Perfil</span>
+                        </div>
+                        <div class="settings-value">Ver perfil</div>
+                    </div>
+                    
+                    <div class="settings-item" onclick="showScreen('fan-benefits')">
+                        <div class="settings-info">
+                            <i class="fas fa-gift"></i>
+                            <span>Beneficios de Fan</span>
+                        </div>
+                        <div class="settings-value">Ver detalles</div>
+                    </div>
+
+                    <div class="settings-item logout">
+                        <div class="settings-info">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Cerrar Sesión</span>
+                    </div>
+                        <div class="settings-value">Salir</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Beneficios para Fans -->
+        <div id="fan-benefits" class="screen">
+            <div class="screen-header glass-effect">
+                <h2><i class="fas fa-gift"></i> Beneficios de Fan</h2>
+                <div>
+                    <i class="fas fa-arrow-left" onclick="goBack()" style="cursor: pointer;"></i>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="benefits-container">
+                    <div class="profile-section">
+                        <h3>🎁 Tus Beneficios Exclusivos</h3>
+                        <p>Como fan activo, disfrutas de estos beneficios especiales:</p>
+                        
+                        <div class="benefits-grid">
+                            <div class="benefit-card">
+                                <div class="benefit-icon"><i class="fas fa-ticket-alt"></i></div>
+                                <div class="benefit-title">Acceso Anticipado</div>
+                                <div class="benefit-description">Entradas exclusivas para eventos antes de que estén disponibles al público</div>
+                            </div>
+                            
+                            <div class="benefit-card">
+                                <div class="benefit-icon"><i class="fas fa-shopping-bag"></i></div>
+                                <div class="benefit-title">Descuentos Exclusivos</div>
+                                <div class="benefit-description">15% de descuento en mercancía oficial de tus talentos favoritos</div>
+                            </div>
+                            
+                            <div class="benefit-card">
+                                <div class="benefit-icon"><i class="fas fa-video"></i></div>
+                                <div class="benefit-title">Contenido VIP</div>
+                                <div class="benefit-description">Acceso a contenido exclusivo detrás de cámaras y sesiones privadas</div>
+                            </div>
+                            
+                            <div class="benefit-card">
+                                <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                                <div class="benefit-title">Meet & Greet</div>
+                                <div class="benefit-description">Oportunidad de conocer a los talentos en eventos especiales para fans</div>
+                            </div>
+                            
+                            <div class="benefit-card">
+                                <div class="benefit-icon"><i class="fas fa-coins"></i></div>
+                                <div class="benefit-title">Recompensas en Tokens</div>
+                                <div class="benefit-description">Recibe tokens adicionales por tu apoyo continuo a los talentos</div>
+                            </div>
+                            
+                            <div class="benefit-card">
+                                <div class="benefit-icon"><i class="fas fa-star"></i></div>
+                                <div class="benefit-title">Experiencias Premium</div>
+                                <div class="benefit-description">Acceso a experiencias únicas como ensayos cerrados y sesiones de creación</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>🏆 Nivel de Fan</h3>
+                        <div class="bio-card">
+                            <div class="bio-header">
+                                <div class="bio-avatar">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop" alt="Mi Avatar">
+                                </div>
+                                <div class="bio-info">
+                                    <h4>Usuario TalentApp</h4>
+                                    <p>Nivel Oro 🔥</p>
+                                </div>
+                            </div>
+                            <div class="bio-text">
+                                <p>Has apoyado a 8 talentos diferentes y acumulado más de 1,500 tokens. ¡Sigue así para alcanzar el nivel Diamante!</p>
+                            </div>
+                            <div class="bio-objective">
+                                <h5>Progreso al siguiente nivel</h5>
+                                <p>Nivel Diamante (requiere 2,500 tokens)</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>📈 Tus Estadísticas</h3>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">💎</div>
+                                <div class="stat-info">
+                                    <div class="stat-value">1,520</div>
+                                    <div class="stat-label">Tokens</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">👑</div>
+                                <div class="stat-info">
+                                    <div class="stat-value">8</div>
+                                    <div class="stat-label">Talentos Apoyados</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📈</div>
+                                <div class="stat-info">
+                                    <div class="stat-value">+24%</div>
+                                    <div class="stat-label">Crecimiento</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Perfil Detallado - Bad Bunny -->
+        <div id="profile-bad-bunny" class="screen">
+            <div class="profile-header">
+                <button onclick="goBack()" class="back-button">←</button>
+                <div class="profile-cover">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bad Bunny Cover">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop" alt="Bad Bunny">
+                    </div>
+                    <h2>Bad Bunny</h2>
+                    <p>@badbunny</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number">45.2M</span>
+                            <span class="stat-label">Seguidores</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1.2K</span>
+                            <span class="stat-label">Posts</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$2.45</span>
+                            <span class="stat-label">Token</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h3>📝 Biografía</h3>
+                    <div class="bio-card">
+                        <div class="bio-header">
+                            <div class="bio-avatar">
+                                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop" alt="Bad Bunny">
+                            </div>
+                            <div class="bio-info">
+                                <h4>Bad Bunny</h4>
+                                <p>28 ❤️ San Juan, Puerto Rico</p>
+                            </div>
+                        </div>
+                        <div class="bio-text">
+                            <p>Soy un artista urbano apasionado que busca revolucionar la música latina con mi estilo único. Mi objetivo es inspirar a millones de personas con mis letras auténticas y ritmos innovadores.</p>
+                        </div>
+                        <div class="bio-objective">
+                            <h5>Mi objetivo</h5>
+                            <p>Quiero lanzar mi nuevo álbum "Nadie Sabe"</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>🎯 Metas</h3>
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Ganar Grammy Latino 2024</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-globe"></i>
+                            <span>World Tour 2024</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-microphone"></i>
+                            <span>Nuevo álbum "Nadie Sabe"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>🎵 Talentos</h3>
+                    <div class="talents-grid">
+                        <div class="talent-item">
+                            <i class="fas fa-music"></i>
+                            <span>Composición</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-microphone"></i>
+                            <span>Canto</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-guitar"></i>
+                            <span>Producción</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-video"></i>
+                            <span>Actuación</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>📊 Estadísticas</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-info">
+                                <div class="stat-value">+15.2%</div>
+                                <div class="stat-label">Crecimiento</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💎</div>
+                            <div class="stat-info">
+                                <div class="stat-value">2.4M</div>
+                                <div class="stat-label">Tokens</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎵</div>
+                            <div class="stat-info">
+                                <div class="stat-value">156</div>
+                                <div class="stat-label">Canciones</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="action-btn primary" onclick="buyTokens('Bad Bunny', 100, 245)">
+                        <i class="fas fa-gem"></i>
+                        Comprar Tokens
+                    </button>
+                    <button class="action-btn secondary" onclick="showNotification('📞 Programando video llamada...')">
+                        <i class="fas fa-video"></i>
+                        Video Llamada
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Perfil Detallado - Shakira -->
+        <div id="profile-shakira" class="screen">
+            <div class="profile-header">
+                <button onclick="goBack()" class="back-button">←</button>
+                <div class="profile-cover">
+                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Shakira Cover">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=100&h=100&fit=crop" alt="Shakira">
+                    </div>
+                    <h2>Shakira</h2>
+                    <p>@shakira</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number">38.7M</span>
+                            <span class="stat-label">Seguidores</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">890</span>
+                            <span class="stat-label">Posts</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$1.89</span>
+                            <span class="stat-label">Token</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h3>📝 Biografía</h3>
+                    <div class="bio-card">
+                        <div class="bio-header">
+                            <div class="bio-avatar">
+                                <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=100&h=100&fit=crop" alt="Shakira">
+                            </div>
+                            <div class="bio-info">
+                                <h4>Shakira</h4>
+                                <p>46 ❤️ Barranquilla, Colombia</p>
+                            </div>
+                        </div>
+                        <div class="bio-text">
+                            <p>Soy una cantante y bailarina apasionada que busca conectar con el mundo a través de mi música. Mi objetivo es inspirar a las mujeres y niños con mi arte y filantropía.</p>
+                        </div>
+                        <div class="bio-objective">
+                            <h5>Mi objetivo</h5>
+                            <p>Quiero lanzar mi álbum "Las Mujeres"</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>🎯 Metas</h3>
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Fundación Pies Descalzos</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-music"></i>
+                            <span>Nuevo álbum "Las Mujeres"</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-globe"></i>
+                            <span>World Tour 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>💃 Talentos</h3>
+                    <div class="talents-grid">
+                        <div class="talent-item">
+                            <i class="fas fa-music"></i>
+                            <span>Canto</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-shoe-prints"></i>
+                            <span>Baile</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-pen"></i>
+                            <span>Composición</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Filantropía</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="action-btn primary" onclick="buyTokens('Shakira', 100, 189)">
+                        <i class="fas fa-gem"></i>
+                        Comprar Tokens
+                    </button>
+                    <button class="action-btn secondary" onclick="showNotification('📞 Programando video llamada...')">
+                        <i class="fas fa-video"></i>
+                        Video Llamada
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Perfil Detallado - Taylor Swift -->
+        <div id="profile-taylor-swift" class="screen">
+            <div class="profile-header">
+                <button onclick="goBack()" class="back-button">←</button>
+                <div class="profile-cover">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Taylor Swift Cover">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Taylor Swift">
+                    </div>
+                    <h2>Taylor Swift</h2>
+                    <p>@taylorswift</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number">35.1M</span>
+                            <span class="stat-label">Seguidores</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">756</span>
+                            <span class="stat-label">Posts</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$3.12</span>
+                            <span class="stat-label">Token</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h3>📝 Biografía</h3>
+                    <div class="bio-card">
+                        <div class="bio-header">
+                            <div class="bio-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Taylor Swift">
+                            </div>
+                            <div class="bio-info">
+                                <h4>Taylor Swift</h4>
+                                <p>34 ❤️ Reading, Pennsylvania</p>
+                            </div>
+                        </div>
+                        <div class="bio-text">
+                            <p>Soy una cantante y compositora apasionada que busca contar historias a través de mi música. Mi objetivo es conectar con mis fans y crear experiencias únicas.</p>
+                        </div>
+                        <div class="bio-objective">
+                            <h5>Mi objetivo</h5>
+                            <p>Quiero completar mi Eras Tour Mundial</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>🎯 Metas</h3>
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <i class="fas fa-film"></i>
+                            <span>Nueva película musical</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-music"></i>
+                            <span>Re-recordings completas</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-globe"></i>
+                            <span>Eras Tour Mundial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>🎸 Talentos</h3>
+                    <div class="talents-grid">
+                        <div class="talent-item">
+                            <i class="fas fa-music"></i>
+                            <span>Canto</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-guitar"></i>
+                            <span>Guitarra</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-pen"></i>
+                            <span>Composición</span>
+                        </div>
+                        <div class="talent-item">
+                            <i class="fas fa-film"></i>
+                            <span>Actuación</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="action-btn primary" onclick="buyTokens('Taylor Swift', 100, 312)">
+                        <i class="fas fa-gem"></i>
+                        Comprar Tokens
+                    </button>
+                    <button class="action-btn secondary" onclick="showNotification('📞 Programando video llamada...')">
+                        <i class="fas fa-video"></i>
+                        Video Llamada
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Perfil del Usuario -->
+        <div id="profile-user" class="screen">
+            <div class="profile-header">
+                <button onclick="goBack()" class="back-button">←</button>
+                <div class="profile-cover">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mi Perfil">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop" alt="Mi Avatar">
+                    </div>
+                    <h2>Mi Perfil</h2>
+                    <p>@usuario_talentapp</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number">1.2K</span>
+                            <span class="stat-label">Seguidores</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">45</span>
+                            <span class="stat-label">Posts</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$150</span>
+                            <span class="stat-label">Tokens</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h3>📝 Mi Biografía</h3>
+                    <div class="bio-card">
+                        <div class="bio-header">
+                            <div class="bio-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop" alt="Mi Avatar">
+                            </div>
+                            <div class="bio-info">
+                                <h4>Usuario TalentApp</h4>
+                                <p>25 ❤️ Ciudad, País</p>
+                            </div>
+                        </div>
+                        <div class="bio-text">
+                            <p>Soy un apasionado de la música y el arte. Me encanta descubrir nuevos talentos y apoyar a artistas emergentes. Mi objetivo es conectar con la comunidad artística y crecer junto a ellos.</p>
+                        </div>
+                        <div class="bio-objective">
+                            <h5>Mi objetivo</h5>
+                            <p>Quiero invertir en 10 talentos prometedores</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>🎯 Mis Metas</h3>
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Invertir $500 en tokens</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-users"></i>
+                            <span>Conectar con 50 talentos</span>
+                        </div>
+                        <div class="goal-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Ganar $1000 en inversiones</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>💎 Mis Inversiones</h3>
+                    <div class="investments-grid">
+                        <div class="investment-item">
+                            <div class="investment-avatar">
+                                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=50&h=50&fit=crop" alt="Bad Bunny">
+                            </div>
+                            <div class="investment-info">
+                                <div class="investment-name">Bad Bunny</div>
+                                <div class="investment-tokens">150 tokens</div>
+                            </div>
+                            <div class="investment-value">
+                                <div class="value-amount">$245</div>
+                                <div class="value-change positive">+12%</div>
+                            </div>
+                        </div>
+                        <div class="investment-item">
+                            <div class="investment-avatar">
+                                <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=50&h=50&fit=crop" alt="Shakira">
+                            </div>
+                            <div class="investment-info">
+                                <div class="investment-name">Shakira</div>
+                                <div class="investment-tokens">80 tokens</div>
+                            </div>
+                            <div class="investment-value">
+                                <div class="value-amount">$151</div>
+                                <div class="value-change positive">+8%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="action-btn primary" onclick="showNotification('📝 Editando perfil...')">
+                        <i class="fas fa-edit"></i>
+                        Editar Perfil
+                    </button>
+                    <button class="action-btn secondary" onclick="showScreen('fan-benefits')">
+                        <i class="fas fa-gift"></i>
+                        Ver Beneficios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funciones globales
+        function showScreen(screenId) {
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+            
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+            }
+        }
+
+        function setActiveNav(element) {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Función de notificación
+        function showNotification(message) {
+            // Crear elemento de notificación
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.left = '50%';
+            notification.style.transform = 'translateX(-50%)';
+            notification.style.backgroundColor = 'rgba(30, 27, 52, 0.95)';
+            notification.style.color = 'white';
+            notification.style.padding = '15px 25px';
+            notification.style.borderRadius = '25px';
+            notification.style.zIndex = '1000';
+            notification.style.fontWeight = '600';
+            notification.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+            notification.style.border = '1px solid var(--glass-border)';
+            notification.style.backdropFilter = 'blur(10px)';
+            notification.style.display = 'flex';
+            notification.style.alignItems = 'center';
+            notification.style.gap = '10px';
+            notification.style.maxWidth = '90%';
+            notification.style.textAlign = 'center';
+            notification.style.animation = 'slideDown 0.3s ease';
+            notification.innerHTML = `<i class="fas fa-check-circle" style="color: #00d2d3;"></i> ${message}`;
+            
+            document.body.appendChild(notification);
+            
+            // Remover después de 3 segundos
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.3s ease';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Animaciones para notificación
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes slideDown {
+                from { top: -100px; opacity: 0; }
+                to { top: 20px; opacity: 1; }
+            }
+            
+            @keyframes slideUp {
+                from { top: 20px; opacity: 1; }
+                to { top: -100px; opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Simular interacción con botones de acción
+        document.querySelectorAll('.action-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const action = this.querySelector('i').className;
+                const actionText = this.parentElement.querySelector('.action-text');
+                
+                if (action.includes('fa-heart')) {
+                    if (!this.classList.contains('liked')) {
+                        this.classList.add('liked');
+                        this.style.color = '#ff6b6b';
+                        const currentLikes = parseInt(actionText.textContent.replace(/[^\d]/g, ''));
+                        actionText.textContent = (currentLikes + 1) + (actionText.textContent.includes('K') ? 'K' : '');
+                        showNotification('¡Has dado like a este talento! ❤️');
+                    } else {
+                        this.classList.remove('liked');
+                        this.style.color = '';
+                        const currentLikes = parseInt(actionText.textContent.replace(/[^\d]/g, ''));
+                        actionText.textContent = (currentLikes - 1) + (actionText.textContent.includes('K') ? 'K' : '');
+                        showNotification('Like removido 💔');
+                    }
+                } else if (action.includes('fa-comment')) {
+                    showNotification('¡Opina sobre este talento! 💬');
+                } else if (action.includes('fa-share')) {
+                    showNotification('¡Comparte este talento con tus amigos! 📤');
+                } else if (action.includes('fa-gem')) {
+                    showNotification('¡Tokeniza este contenido para apoyar al talento! 💎');
+                }
+            });
+        });
+
+        // Manejo de formularios
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('register-form');
+            const loginForm = document.getElementById('login-form');
+            
+            // Selector de tipo de usuario
+            const userTypeOptions = document.querySelectorAll('.user-type-option');
+            userTypeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remover selección previa
+                    userTypeOptions.forEach(opt => opt.classList.remove('selected'));
+                    // Seleccionar la opción actual
+                    this.classList.add('selected');
+                });
+            });
+            
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Verificar que se haya seleccionado un tipo de usuario
+                    const selectedType = document.querySelector('.user-type-option.selected');
+                    if (!selectedType) {
+                        showNotification('Por favor selecciona un tipo de usuario');
+                        return;
+                    }
+                    
+                    const userType = selectedType.dataset.type;
+                    const userName = document.getElementById('fullname').value;
+                    
+                    showNotification(`¡Cuenta creada exitosamente como ${userType === 'fan' ? 'Fan' : 'Talento'}! 🎉`);
+                    setTimeout(() => {
+                        showScreen('discovery-screen');
+                        // Resetear navegación
+                        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                        document.querySelector('.nav-item').classList.add('active');
+                    }, 1500);
+                });
+            }
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('¡Inicio de sesión exitoso! 🎉');
+                    setTimeout(() => {
+                        showScreen('discovery-screen');
+                        // Resetear navegación
+                        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                        document.querySelector('.nav-item').classList.add('active');
+                    }, 1500);
+                });
+            }
+            
+            // Logout
+            document.querySelector('.settings-item.logout').addEventListener('click', function() {
+                showNotification('¡Sesión cerrada! 👋');
+                setTimeout(() => {
+                    showScreen('welcome-screen');
+                }, 1500);
+            });
+        });
+
+        // Función para volver atrás
+        function goBack() {
+            showScreen('discovery-screen');
+        }
+
+        // Función para simular compra de tokens
+        function buyTokens(talentName, amount, price) {
+            showNotification(`💎 Compra exitosa: ${amount} tokens de ${talentName} por $${price}`);
+        }
+
+        // Función para búsqueda de talentos
+        function searchTalents(query) {
+            const searchResults = document.getElementById('search-results');
+            const searchInput = document.getElementById('search-input');
+            
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const talents = [
+                {
+                    id: 'bad-bunny',
+                    name: 'Bad Bunny',
+                    username: '@badbunny',
+                    avatar: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop',
+                    category: 'Música'
+                },
+                {
+                    id: 'shakira',
+                    name: 'Shakira',
+                    username: '@shakira',
+                    avatar: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=100&h=100&fit=crop',
+                    category: 'Música'
+                },
+                {
+                    id: 'taylor-swift',
+                    name: 'Taylor Swift',
+                    username: '@taylorswift',
+                    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
+                    category: 'Música'
+                },
+                {
+                    id: 'beyonce',
+                    name: 'Beyoncé',
+                    username: '@beyonce',
+                    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop',
+                    category: 'Música'
+                },
+                {
+                    id: 'drake',
+                    name: 'Drake',
+                    username: '@drake',
+                    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop',
+                    category: 'Música'
+                }
+            ];
+
+            const filteredTalents = talents.filter(talent => 
+                talent.name.toLowerCase().includes(query.toLowerCase()) ||
+                talent.username.toLowerCase().includes(query.toLowerCase()) ||
+                talent.category.toLowerCase().includes(query.toLowerCase())
+            );
+
+            if (filteredTalents.length > 0) {
+                searchResults.innerHTML = filteredTalents.map(talent => `
+                    <div class="search-result-item" onclick="showPersonDetail('${talent.id}')">
+                        <img src="${talent.avatar}" alt="${talent.name}" class="search-result-avatar">
+                        <div class="search-result-info">
+                            <div class="search-result-name">${talent.name}</div>
+                            <div class="search-result-username">${talent.username} • ${talent.category}</div>
+                        </div>
+                    </div>
+                `).join('');
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.innerHTML = '<div style="padding: 15px; text-align: center; color: var(--text-secondary);">No se encontraron resultados</div>';
+                searchResults.style.display = 'block';
+            }
+        }
+
+        // Función para mostrar perfil detallado
+        function showPersonDetail(personId) {
+            const profileScreen = document.getElementById(`profile-${personId}`);
+            if (profileScreen) {
+                showScreen(`profile-${personId}`);
+            } else {
+                showNotification('Perfil no disponible');
+            }
+        }
+    </script>
+</body>
+</html>
