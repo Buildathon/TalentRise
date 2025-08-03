@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Following from "./pages/FollowingPage";
 import Profile from "./pages/ProfilePage";
+import Talento from "./pages/TalentSupportPage";
 
 
 import "./App.css";
@@ -28,6 +29,10 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/home" component={DevPage} />
           <Route path="/perfil" component={Profile} />
+    <Route path="/talento" component={Talento} />
+
+   
+
             <Route path="/Following" component={Following} />
           <Route path="/dev" component={DevPage} />
           <Route path="/dev/:id" component={DevDetailPage} />
